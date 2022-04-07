@@ -1,1 +1,1 @@
-export {default as UpdateServiceLogPage} from './UpdateServiceLogPage'
+export { default as UpdateServiceLogPage } from './UpdateServiceLogPage';

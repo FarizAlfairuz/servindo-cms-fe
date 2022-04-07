@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const PrintPage = () => {
-  return (
-    <div>PrintPage</div>
-  )
-}
+  return <div>PrintPage</div>;
+};
 
-export default PrintPage
+export default PrintPage;

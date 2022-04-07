@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const CreateCustomerPage = () => {
-  return (
-    <div>CreateCustomerPage</div>
-  )
-}
+  return <div>CreateCustomerPage</div>;
+};
 
-export default CreateCustomerPage
+export default CreateCustomerPage;

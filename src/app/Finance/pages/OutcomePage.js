@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const OutcomePage = () => {
-  return (
-    <div>OutcomePage</div>
-  )
-}
+  return <div>OutcomePage</div>;
+};
 
-export default OutcomePage
+export default OutcomePage;

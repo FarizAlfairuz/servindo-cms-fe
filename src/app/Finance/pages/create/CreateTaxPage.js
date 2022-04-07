@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const CreateTaxPage = () => {
-  return (
-    <div>CreateTaxPage</div>
-  )
-}
+  return <div>CreateTaxPage</div>;
+};
 
-export default CreateTaxPage
+export default CreateTaxPage;

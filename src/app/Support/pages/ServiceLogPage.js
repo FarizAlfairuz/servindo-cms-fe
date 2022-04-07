@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const ServiceLogPage = () => {
-  return (
-    <div>ServiceLogPage</div>
-  )
-}
+  return <div>ServiceLogPage</div>;
+};
 
-export default ServiceLogPage
+export default ServiceLogPage;

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const UpdateCustomerPage = () => {
-  return (
-    <div>UpdateCustomerPage</div>
-  )
-}
+  return <div>UpdateCustomerPage</div>;
+};
 
-export default UpdateCustomerPage
+export default UpdateCustomerPage;

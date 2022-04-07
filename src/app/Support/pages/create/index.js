@@ -1,1 +1,1 @@
-export {default as CreateServiceLogPage} from './CreateServiceLogPage'
+export { default as CreateServiceLogPage } from './CreateServiceLogPage';

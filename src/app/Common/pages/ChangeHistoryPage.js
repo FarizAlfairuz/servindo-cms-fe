@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const ChangeHistoryPage = () => {
-  return (
-    <div>ChangeHistoryPage</div>
-  )
-}
+  return <div>ChangeHistoryPage</div>;
+};
 
-export default ChangeHistoryPage
+export default ChangeHistoryPage;

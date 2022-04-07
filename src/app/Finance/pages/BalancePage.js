@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const BalancePage = () => {
-  return (
-    <div>BalancePage</div>
-  )
-}
+  return <div>BalancePage</div>;
+};
 
-export default BalancePage
+export default BalancePage;

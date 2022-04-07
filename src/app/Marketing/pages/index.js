@@ -1,2 +1,2 @@
-export {default as CustomerPage} from './CustomerPage'
-export {default as SalesPage} from './SalesPage'
+export { default as CustomerPage } from './CustomerPage';
+export { default as SalesPage } from './SalesPage';
