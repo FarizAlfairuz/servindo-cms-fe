@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 const MenuDisclosure = ({ links }) => (
   <Disclosure as="div">
     {({ open }) => (
-      <>
-        <Disclosure.Button className="flex justify-between w-full px-4 py-4 text-sm font-medium text-left text-white bg-green-600 hover:bg-green-700 focus:outline-none">
+      <div className="px-2">
+        <Disclosure.Button className="flex justify-between w-full px-4 py-2 rounded-md text-sm font-medium text-left text-white bg-green-600 hover:bg-green-700 focus:outline-none">
           <span>{links.label}</span>
           <ChevronRightIcon
             className={`${
@@ -24,19 +24,18 @@ const MenuDisclosure = ({ links }) => (
           leaveTo="transform scale-95 opacity-0"
         >
           {links.links.map((link) => (
-            <Disclosure.Panel className="flex">
+            <Disclosure.Panel key={link.name} className="flex px-3 py-1">
               <NavLink
-                key={link.name}
                 to={link.to}
                 activeClassName="text-green-600 bg-green-200"
-                className="px-4 py-4 w-full text-sm hover:text-green-400 hover:bg-green-100 hover:cursor-pointer"
+                className="px-4 py-2 w-full text-sm hover:text-green-400 rounded-md hover:bg-green-100 hover:cursor-pointer"
               >
                 {link.name}
               </NavLink>
             </Disclosure.Panel>
           ))}
         </Transition>
-      </>
+      </div>
     )}
   </Disclosure>
 );

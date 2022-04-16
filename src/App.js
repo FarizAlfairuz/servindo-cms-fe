@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Router } from './config';
+import './App.css';
 
 const App = () => {
-  const role = 'keuangan';
+  const role = 'superadmin';
   return <Router role={role} />;
 };
 
