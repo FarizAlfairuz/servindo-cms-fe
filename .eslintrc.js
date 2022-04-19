@@ -8,6 +8,8 @@ module.exports = {
     node: true,
   },
   rules: {
+    'default-param-last': ['off'],
+    'react/jsx-props-no-spreading': ['off'],
     'arrow-body-style': 'warn',
     'import/prefer-default-export': 'off',
     'react/react-in-jsx-scope': 'off',
