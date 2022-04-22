@@ -18,8 +18,6 @@ import DashboardLayout from '../app/Common/components/DashboardLayout';
 
 const useRouter = () => {
   const role = useSelector((state) => state.currentUser.currentUser.username);
-  // const role = 'superadmin';
-  console.log(role);
 
   return (
     <Router>

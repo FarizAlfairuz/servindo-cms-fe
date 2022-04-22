@@ -139,7 +139,7 @@ const Table = ({ columns, data }) => {
     <div>
       <div className="flex justify-between items-center p-2 mb-4">
         {tableSize}
-        <div className="w-96 shadow-md flex rounded-xl bg-white p-1 select-none">
+        <div className="w-96 shadow-md flex rounded-md bg-white p-1 select-none">
           <input
             className="w-full h-full  p-2 focus:outline-none"
             placeholder="Cari"
@@ -158,7 +158,7 @@ const Table = ({ columns, data }) => {
       <div>
         <table
           {...getTableProps()}
-          className="overflow-hidden w-full border-separate rounded-xl bg-white shadow"
+          className="overflow-hidden w-full border-separate rounded-md bg-white shadow"
         >
           <thead className="bg-green-700 text-white">
             {headerGroups.map((headerGroup) => (
