@@ -202,12 +202,12 @@ export const userRoutes = [
   },
   {
     name: 'CreateUserPage',
-    path: () => '/dashboard/add/user',
+    path: () => '/dashboard/user/create',
     component: CreateUserPage,
   },
   {
     name: 'UpdateUserPage',
-    path: () => '/dashboard/update/user',
+    path: () => '/dashboard/user/:id',
     component: UpdateUserPage,
   },
 ];

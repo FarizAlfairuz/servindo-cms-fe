@@ -2,15 +2,22 @@ import React from 'react';
 import Navbar from './Navbar';
 import Header from './Header';
 
-const DashboardLayout = ({ children, role }) => (
-  <div className="flex w-full">
-    <Navbar role={role} />
-    <div className="h-full w-full">
-      <Header />
-      {/* pt-8 pl-72 pr-4 pb-4  */}
-      <div className="p-5 bg-gray-50 w-full h-full">{children}</div>
+const DashboardLayout = ({ children, role }) => {
+  const [isOpen, setIsOpen] = React.useState(true);
+
+  const toggleSidebar = React.useCallback(() => {
+    setIsOpen(!isOpen);
+  });
+
+  return (
+    <div className="flex w-full bg-gray-50">
+      <Navbar show={isOpen} role={role} />
+      <div className="h-full w-full">
+        <Header toggleSidebar={toggleSidebar} />
+        <div className="px-8 py-6 w-full">{children}</div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default DashboardLayout;

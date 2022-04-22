@@ -1,9 +1,11 @@
 import { LogoutIcon } from '@heroicons/react/outline';
+import { MenuIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchAuthRequest } from '../../../redux';
 
-const Header = () => {
+const Header = (props) => {
+  const { toggleSidebar } = props;
   const dispatch = useDispatch();
 
   const logoutCallback = React.useCallback(() => {
@@ -11,7 +13,10 @@ const Header = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-green-600 h-12 flex justify-end items-center px-6 py-4 shadow-lg sticky top-0 z-50">
+    <div className="bg-green-700 h-12 flex justify-between items-center px-3 py-4 shadow-lg sticky top-0 z-50">
+      <button type="button" onClick={toggleSidebar}>
+        <MenuIcon className="w-8 h-8 text-white" />
+      </button>
       <div className="flex space-x-2">
         <div className="text-white font-bold">username</div>
         <button

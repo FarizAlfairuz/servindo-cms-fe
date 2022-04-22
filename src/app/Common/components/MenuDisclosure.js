@@ -7,7 +7,7 @@ const MenuDisclosure = ({ links }) => (
   <Disclosure as="div">
     {({ open }) => (
       <div className="px-2">
-        <Disclosure.Button className="flex justify-between w-full px-4 py-2 rounded-md text-sm font-medium text-left text-white bg-green-600 hover:bg-green-700 focus:outline-none">
+        <Disclosure.Button className="flex justify-between w-full px-4 py-2 rounded-md text-sm font-medium text-left text-white bg-green-700 hover:bg-green-600 focus:outline-none">
           <span>{links.label}</span>
           <ChevronRightIcon
             className={`${

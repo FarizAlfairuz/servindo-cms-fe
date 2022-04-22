@@ -35,6 +35,7 @@ const useRouter = () => {
         ))}
         {financeRoutes.map((route) => (
           <FinanceRoutes
+            exact
             key={route.name}
             path={route.path()}
             component={route.component}
@@ -43,6 +44,7 @@ const useRouter = () => {
         ))}
         {marketingRoutes.map((route) => (
           <MarketingRoutes
+            exact
             key={route.name}
             path={route.path()}
             component={route.component}
@@ -51,6 +53,7 @@ const useRouter = () => {
         ))}
         {purchasingRoutes.map((route) => (
           <PurchasingRoutes
+            exact
             key={route.name}
             path={route.path()}
             component={route.component}
@@ -59,6 +62,7 @@ const useRouter = () => {
         ))}
         {supportRoutes.map((route) => (
           <SupportRoutes
+            exact
             key={route.name}
             path={route.path()}
             component={route.component}
@@ -67,6 +71,7 @@ const useRouter = () => {
         ))}
         {userRoutes.map((route) => (
           <UserRoutes
+            exact
             key={route.name}
             path={route.path()}
             component={route.component}

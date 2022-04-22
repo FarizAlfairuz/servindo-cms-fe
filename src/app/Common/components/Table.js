@@ -94,7 +94,7 @@ const Table = ({ columns, data }) => {
                 gotoPage(0);
               }}
               disabled={!canPreviousPage}
-              className="bg-green-600 p-1 rounded-l"
+              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1 rounded-l"
             >
               <ChevronDoubleLeftIcon className="w-6 h-6 text-white" />
             </button>
@@ -102,7 +102,7 @@ const Table = ({ columns, data }) => {
               type="button"
               onClick={() => previousPage()}
               disabled={!canPreviousPage}
-              className="bg-green-600 p-1"
+              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1"
             >
               <ChevronLeftIcon className="w-6 h-6 text-white" />
             </button>
@@ -116,7 +116,7 @@ const Table = ({ columns, data }) => {
               type="button"
               onClick={() => nextPage()}
               disabled={!canNextPage}
-              className="bg-green-600 p-1"
+              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1"
             >
               <ChevronRightIcon className="w-6 h-6 text-white" />
             </button>
@@ -126,7 +126,7 @@ const Table = ({ columns, data }) => {
                 gotoPage(pageCount - 1);
               }}
               disabled={!canNextPage}
-              className="bg-green-600 p-1 rounded-r"
+              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1 rounded-r"
             >
               <ChevronDoubleRightIcon className="w-6 h-6 text-white" />
             </button>
@@ -137,7 +137,7 @@ const Table = ({ columns, data }) => {
 
   return (
     <div>
-      <div className="flex justify-between items-center p-2">
+      <div className="flex justify-between items-center p-2 mb-4">
         {tableSize}
         <div className="w-96 shadow-md flex rounded-xl bg-white p-1 select-none">
           <input
@@ -160,7 +160,7 @@ const Table = ({ columns, data }) => {
           {...getTableProps()}
           className="overflow-hidden w-full border-separate rounded-xl bg-white shadow"
         >
-          <thead className="bg-green-500 text-white">
+          <thead className="bg-green-700 text-white">
             {headerGroups.map((headerGroup) => (
               <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
