@@ -9,7 +9,7 @@ import rootReducer from '../reducers';
 const persistConfig = {
   key: 'role',
   storage,
-  whitelist: ['currentUser'],
+  whitelist: ['authReducer'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

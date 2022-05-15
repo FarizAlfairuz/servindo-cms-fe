@@ -87,14 +87,14 @@ const Table = ({ columns, data }) => {
               {pageIndex + 1} of {pageOptions.length}
             </em>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center space-x-1">
             <button
               type="button"
               onClick={() => {
                 gotoPage(0);
               }}
               disabled={!canPreviousPage}
-              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1 rounded-l"
+              className="bg-cyan-700 hover:bg-cyan-600 disabled:bg-slate-400 p-1 rounded"
             >
               <ChevronDoubleLeftIcon className="w-6 h-6 text-white" />
             </button>
@@ -102,13 +102,13 @@ const Table = ({ columns, data }) => {
               type="button"
               onClick={() => previousPage()}
               disabled={!canPreviousPage}
-              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1"
+              className="bg-cyan-700 hover:bg-cyan-600 disabled:bg-slate-400 p-1 rounded"
             >
               <ChevronLeftIcon className="w-6 h-6 text-white" />
             </button>
             <input
               type="number"
-              className="w-10 border-2 border-green-600 text-center text-lg pl-3"
+              className="w-10 border-2 border-cyan-700 text-center text-lg pl-3 rounded"
               value={pageIndex + 1}
               onChange={inputGotoPage}
             />
@@ -116,7 +116,7 @@ const Table = ({ columns, data }) => {
               type="button"
               onClick={() => nextPage()}
               disabled={!canNextPage}
-              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1"
+              className="bg-cyan-700 hover:bg-cyan-600 disabled:bg-slate-400 p-1 rounded"
             >
               <ChevronRightIcon className="w-6 h-6 text-white" />
             </button>
@@ -126,7 +126,7 @@ const Table = ({ columns, data }) => {
                 gotoPage(pageCount - 1);
               }}
               disabled={!canNextPage}
-              className="bg-green-600 hover:bg-green-500 disabled:bg-green-200 p-1 rounded-r"
+              className="bg-cyan-700 hover:bg-cyan-600 disabled:bg-slate-400 p-1 rounded"
             >
               <ChevronDoubleRightIcon className="w-6 h-6 text-white" />
             </button>
@@ -160,7 +160,7 @@ const Table = ({ columns, data }) => {
           {...getTableProps()}
           className="overflow-hidden w-full border-separate rounded-md bg-white shadow"
         >
-          <thead className="bg-green-700 text-white">
+          <thead className="bg-cyan-800 text-white">
             {headerGroups.map((headerGroup) => (
               <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
@@ -179,7 +179,11 @@ const Table = ({ columns, data }) => {
             {page.map((row) => {
               prepareRow(row);
               return (
-                <tr key={row.id} {...row.getRowProps()} className="tr">
+                <tr
+                  key={row.id}
+                  {...row.getRowProps()}
+                  className="odd:bg-slate-100"
+                >
                   {row.cells.map((cell, index) => (
                     <td key={index} className="py-2 px-8">
                       {cell.render('Cell')}

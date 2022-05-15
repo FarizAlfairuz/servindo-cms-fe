@@ -1,7 +1,10 @@
 import {
-  FETCH_AUTH_REQUEST,
-  FETCH_AUTH_SUCCESS,
-  FETCH_AUTH_FAILED,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILED,
 } from '../types/authTypes';
 
 const initialState = {
@@ -12,26 +15,47 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_AUTH_REQUEST:
+    case LOGIN_REQUEST:
       return {
         ...state,
+        loading: true,
         currentUser: {
           username: undefined,
           password: undefined,
         },
       };
 
-    case FETCH_AUTH_SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         loading: false,
         currentUser: action.payload,
         error: '',
       };
 
-    case FETCH_AUTH_FAILED:
+    case LOGIN_FAILED:
       return {
         ...state,
         currentUser: [],
+        error: action.payload,
+      };
+
+    case LOGOUT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case LOGOUT_SUCCESS:
+      return {
+        loading: false,
+        currentUser: action.payload,
+        error: '',
+      };
+
+    case LOGOUT_FAILED:
+      return {
+        ...state,
+        loading: false,
         error: action.payload,
       };
 

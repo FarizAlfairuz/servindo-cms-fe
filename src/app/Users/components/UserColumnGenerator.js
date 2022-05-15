@@ -17,17 +17,19 @@ const useUserColumnGenerator = () => {
         accessor: 'role',
       },
       {
-        Header: 'Aksi',
+        Header: 'Action',
         Cell: (props) => {
           const { row } = props;
           return (
-            <Link
-              to={`/dashboard/user/${row.original.id}`}
-              className="hover:cursor-pointer inline-flex space-x-1 items-center hover:text-green-700"
-            >
-              <PencilAltIcon className="w-4 h-4" />
-              <div className="font-bold">Ubah</div>
-            </Link>
+            <div className="flex justify-center">
+              <Link
+                to={`/dashboard/user/${row.original.id}`}
+                className="hover:cursor-pointer inline-flex space-x-1 items-center hover:text-cyan-700"
+              >
+                <PencilAltIcon className="w-4 h-4" />
+                <div className="font-bold text-sm">Edit</div>
+              </Link>
+            </div>
           );
         },
       },

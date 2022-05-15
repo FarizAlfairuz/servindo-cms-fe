@@ -2,22 +2,22 @@ import { LogoutIcon } from '@heroicons/react/outline';
 import { MenuIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAuthRequest } from '../../../redux';
+import { logout } from '../../../redux';
 
 const Header = (props) => {
   const { toggleSidebar } = props;
   const username = useSelector(
-    (state) => state.currentUser.currentUser.username
+    (state) => state.authReducer.currentUser.data.username
   );
 
   const dispatch = useDispatch();
 
   const logoutCallback = React.useCallback(() => {
-    dispatch(fetchAuthRequest());
+    dispatch(logout());
   }, [dispatch]);
 
   return (
-    <div className="bg-green-700 h-12 flex justify-between items-center px-3 py-4 shadow-lg sticky top-0 z-50">
+    <div className="bg-gray-900 h-12 flex justify-between items-center px-3 py-4 shadow-lg sticky top-0 z-50">
       <button type="button" onClick={toggleSidebar}>
         <MenuIcon className="w-8 h-8 text-white" />
       </button>

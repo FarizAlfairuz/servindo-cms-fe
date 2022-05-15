@@ -17,7 +17,9 @@ import {
 import DashboardLayout from '../app/Common/components/DashboardLayout';
 
 const useRouter = () => {
-  const role = useSelector((state) => state.currentUser.currentUser.username);
+  const user = useSelector((state) => state.authReducer.currentUser);
+
+  const role = user && user.data ? user.data.role : '';
 
   return (
     <Router>
@@ -82,7 +84,7 @@ const useRouter = () => {
         <Route exact path="/dashboard">
           {role === 'superadmin' ? (
             <Redirect to="/dashboard/user" />
-          ) : role === 'keuangan' ? (
+          ) : role === 'finance' ? (
             <Redirect to="/dashboard/pemasukan" />
           ) : role === 'marketing' ? (
             <Redirect to="/dashboard/penjualan" />
@@ -128,7 +130,7 @@ const FinanceRoutes = ({ role, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={() =>
-      role === 'superadmin' || role === 'keuangan' ? (
+      role === 'superadmin' || role === 'finance' ? (
         <DashboardLayout role={role}>
           <Component />
         </DashboardLayout>

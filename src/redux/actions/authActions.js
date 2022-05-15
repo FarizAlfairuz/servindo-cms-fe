@@ -1,23 +1,64 @@
+import AuthAPI from '../../api/AuthAPI';
 import {
-  FETCH_AUTH_REQUEST,
-  FETCH_AUTH_SUCCESS,
-  FETCH_AUTH_FAILED,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILED,
 } from '../types/authTypes';
 
-export const fetchAuthRequest = () => ({
-  type: FETCH_AUTH_REQUEST,
+const fetchAuthRequest = () => ({
+  type: LOGIN_REQUEST,
 });
 
-export const fetchAuthSuccess = (currentUser) => ({
-  type: FETCH_AUTH_SUCCESS,
+const fetchAuthSuccess = (currentUser) => ({
+  type: LOGIN_SUCCESS,
   payload: currentUser,
 });
 
 const fetchAuthFailed = (error) => ({
-  type: FETCH_AUTH_FAILED,
+  type: LOGIN_FAILED,
   payload: error,
 });
 
-const fetchAuth = () => (dispatch) => {
+const logoutRequest = () => ({
+  type: LOGOUT_REQUEST,
+});
+
+const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS,
+});
+
+const logoutFailed = (error) => ({
+  type: LOGOUT_FAILED,
+  payload: error,
+});
+
+export const login = (data) => (dispatch) => {
   dispatch(fetchAuthRequest);
+  AuthAPI.login(data)
+    .then((res) => {
+      const currentUser = res.data;
+      dispatch(fetchAuthSuccess(currentUser));
+    })
+    .catch((err) => {
+      const errorMsg = err.message;
+      dispatch(fetchAuthFailed(errorMsg));
+    });
+};
+
+export const logout = () => (dispatch) => {
+  dispatch(logoutRequest);
+  AuthAPI.logout()
+    .then((res) => {
+      const currentUser = res.data;
+
+      dispatch(logoutSuccess(currentUser));
+    })
+    .catch((err) => {
+      const errorMsg = err.message;
+
+      dispatch(logoutFailed(errorMsg));
+    });
 };

@@ -10,7 +10,7 @@ const DashboardLayout = ({ children, role }) => {
   });
 
   return (
-    <div className="flex w-full bg-gray-50">
+    <div className="flex w-full bg-slate-50">
       <Navbar show={isOpen} role={role} />
       <div className="h-full w-full">
         <Header toggleSidebar={toggleSidebar} />
@@ -20,4 +20,4 @@ const DashboardLayout = ({ children, role }) => {
   );
 };
 
-export default DashboardLayout;
+export default React.memo(DashboardLayout);
