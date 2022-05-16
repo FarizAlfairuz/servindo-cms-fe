@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PencilAltIcon } from '@heroicons/react/solid';
-import MOCK_DATA_USER from '../../../api/mock_data/MOCK_DATA_USER.json';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllUsers } from '../../../redux/actions/userActions';
 
 const useUserColumnGenerator = () => {
-  const data = React.useMemo(() => MOCK_DATA_USER, []);
+  // const dispatch = useDispatch();
+
+  // const query = {
+  //   limit: 5,
+  // };
+
+  // useEffect(() => {
+  //   dispatch(getAllUsers(query));
+  // }, []);
+
+  // const users = useSelector((state) => state.userReducer.users);
+
+  // const data = users && users.edge ? users.edge : [];
 
   const column = React.useMemo(
     () => [
@@ -37,7 +50,7 @@ const useUserColumnGenerator = () => {
     []
   );
 
-  return { column, data };
+  return { column };
 };
 
 export default useUserColumnGenerator;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '../../Common/components/Table';
+import Table from '../../Common/components/Table/Table';
 import useOutcomeColumnGenerator from '../components/OutcomeColumnGenerator';
 
 const OutcomePage = () => {

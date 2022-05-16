@@ -7,7 +7,7 @@ import storage from 'redux-persist/lib/storage';
 import rootReducer from '../reducers';
 
 const persistConfig = {
-  key: 'role',
+  key: 'currentUser',
   storage,
   whitelist: ['authReducer'],
 };
@@ -16,7 +16,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = createStore(
   persistedReducer,
-  composeWithDevTools(applyMiddleware(logger, thunk))
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 export const persistor = persistStore(store);

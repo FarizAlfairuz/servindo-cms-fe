@@ -11,7 +11,7 @@ const UpdateUserPage = () => (
     </div>
 
     <form className="w-1/2 space-y-3">
-      <InputForm label="Username" />
+      {/* <InputForm label="Username" /> */}
       <div className="flex justify-end">
         <Button submit>Simpan</Button>
       </div>

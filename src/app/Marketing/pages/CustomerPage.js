@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '../../Common/components/Table';
+import Table from '../../Common/components/Table/Table';
 import useCustomerColumnGenerator from '../components/CustomerColumnGenerator';
 
 const CustomerPage = () => {
