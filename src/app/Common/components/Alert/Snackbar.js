@@ -42,9 +42,11 @@ const Snackbar = forwardRef((props, ref) => {
             <div className="">{alert.icon}</div>
             <div className="flex flex-col items-start justify-center">
               <div className="font-semibold">{alert.message}</div>
-              <div className="text-xs">
-                {toFirstLetterCapitalize(alert.description)}
-              </div>
+              {alert.description && (
+                <div className="text-xs">
+                  {toFirstLetterCapitalize(alert.description)}
+                </div>
+              )}
             </div>
           </div>
           <button type="button" className="ml-8" onClick={hide}>
