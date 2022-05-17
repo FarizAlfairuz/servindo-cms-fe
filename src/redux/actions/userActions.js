@@ -39,3 +39,16 @@ export const getAllUsers = (query) => (dispatch) => {
       dispatch(fetchUsersFailed(errorMsg));
     });
 };
+
+export const getSingleUser = (id) => (dispatch) => {
+  dispatch(fetchUsersRequest());
+  UserAPI.getSingleUser(id)
+    .then((res) => {
+      const user = res.data.data;
+      dispatch(fetchUsersSuccess([user]));
+    })
+    .catch((err) => {
+      const errorMsg = err.message;
+      dispatch(fetchUsersFailed(errorMsg));
+    });
+};

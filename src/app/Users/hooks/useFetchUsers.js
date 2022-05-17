@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers } from '../../../redux/actions/userActions';
+import { getAllUsers, getSingleUser } from '../../../redux/actions/userActions';
 
-const useFetchUsers = (query) => {
+export const useGetAllUsers = (query) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,4 +16,15 @@ const useFetchUsers = (query) => {
   return { users, pagination, loading };
 };
 
-export default useFetchUsers;
+export const useGetSingleUser = (id) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSingleUser(id));
+  }, [id]);
+
+  const user = useSelector((state) => state.userReducer.users[0]);
+  const loading = useSelector((state) => state.userReducer.loading);
+
+  return { user, loading };
+};

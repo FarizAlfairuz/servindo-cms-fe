@@ -10,6 +10,14 @@ const UserAPI = {
   async createUser(data) {
     return API.post('/users', data);
   },
+
+  async getSingleUser(id) {
+    return API.get(`/users/${id}`);
+  },
+
+  async updateSingleUser(id, data) {
+    return API.put(`/users/${id}`, data);
+  },
 };
 
 export default UserAPI;

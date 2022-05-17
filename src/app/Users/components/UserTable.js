@@ -3,7 +3,7 @@ import usePagination from '../../../hooks/usePagination';
 import Table from '../../Common/components/Table/Table';
 import TablePagination from '../../Common/components/Table/TablePagination';
 import TableSize from '../../Common/components/Table/TableSize';
-import useFetchUsers from '../hooks/useFetchUsers';
+import { useGetAllUsers } from '../hooks/useFetchUsers';
 import useUserColumnGenerator from './UserColumnGenerator';
 
 const UserTable = () => {
@@ -16,7 +16,8 @@ const UserTable = () => {
     page: currentPage,
   };
 
-  const { users, pagination, loading } = useFetchUsers(query);
+  const { users, pagination, loading } = useGetAllUsers(query);
+
 
   return (
     <div className="space-y-4">
