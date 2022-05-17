@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import usePagination from '../../../hooks/usePagination';
 import Table from '../../Common/components/Table/Table';
 import TablePagination from '../../Common/components/Table/TablePagination';
@@ -16,13 +16,12 @@ const UserTable = () => {
     page: currentPage,
   };
 
-  const { users, pagination } = useFetchUsers(query);
-  console.log(users);
+  const { users, pagination, loading } = useFetchUsers(query);
 
   return (
     <div className="space-y-4">
       <TableSize pageSize={pageSize} setPageSize={setPageSize} />
-      <Table data={users} columns={column} />
+      <Table data={users} columns={column} loading={loading} />
       <TablePagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

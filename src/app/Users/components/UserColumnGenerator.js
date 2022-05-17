@@ -1,24 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { PencilAltIcon } from '@heroicons/react/solid';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers } from '../../../redux/actions/userActions';
 
 const useUserColumnGenerator = () => {
-  // const dispatch = useDispatch();
-
-  // const query = {
-  //   limit: 5,
-  // };
-
-  // useEffect(() => {
-  //   dispatch(getAllUsers(query));
-  // }, []);
-
-  // const users = useSelector((state) => state.userReducer.users);
-
-  // const data = users && users.edge ? users.edge : [];
-
   const column = React.useMemo(
     () => [
       {

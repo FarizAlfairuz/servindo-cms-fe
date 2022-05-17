@@ -11,8 +11,9 @@ const useFetchUsers = (query) => {
 
   const users = useSelector((state) => state.userReducer.users);
   const pagination = useSelector((state) => state.paginationReducer.pagination);
+  const loading = useSelector((state) => state.userReducer.loading);
 
-  return { users, pagination };
+  return { users, pagination, loading };
 };
 
 export default useFetchUsers;

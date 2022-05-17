@@ -6,6 +6,10 @@ const UserAPI = {
       params: { limit: query.limit, page: query.page },
     });
   },
+
+  async createUser(data) {
+    return API.post('/users', data);
+  },
 };
 
 export default UserAPI;
