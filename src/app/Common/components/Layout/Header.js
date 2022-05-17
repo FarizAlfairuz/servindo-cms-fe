@@ -1,8 +1,8 @@
 import { LogoutIcon } from '@heroicons/react/outline';
 import { MenuIcon } from '@heroicons/react/solid';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../../redux';
+import { logout } from '../../../../redux';
 
 const Header = (props) => {
   const { toggleSidebar } = props;
@@ -12,7 +12,7 @@ const Header = (props) => {
 
   const dispatch = useDispatch();
 
-  const logoutCallback = React.useCallback(() => {
+  const logoutCallback = useCallback(() => {
     dispatch(logout());
   }, [dispatch]);
 

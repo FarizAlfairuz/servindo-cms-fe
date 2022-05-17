@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { login } from '../../../redux';
-import InputForm from '../../Common/components/InputForm';
+import InputForm from '../../Common/components/Forms/InputForm';
 import Button from '../../Common/components/Buttons/Button';
 
 const schema = yup.object().shape({
-  username: yup.string().required('Username tidak boleh kosong'),
+  username: yup.string().required('Username is required'),
   password: yup
     .string()
-    .required('Password tidak boleh kosong')
-    .min(6, 'Minimal 6 karakter'),
+    .required('Password is required')
+    .min(6, 'Min. 6 characters'),
 });
 
 const LoginPage = () => {
   const dispatch = useDispatch();
 
-  const onSubmitHandlerCallback = React.useCallback(
+  const onSubmitHandlerCallback = useCallback(
     (data) => {
       dispatch(login(data));
     },

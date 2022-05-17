@@ -7,9 +7,9 @@ const BackButton = () => {
 
   return (
     <button type="button" onClick={history.goBack} className="inline-block">
-      <div className="flex hover:text-green-600 hover:cursor-pointer">
+      <div className="flex hover:text-cyan-700 hover:cursor-pointer">
         <ArrowSmLeftIcon className="w-5 h-5" />
-        <div className="text-sm font-bold">Kembali</div>
+        <div className="text-sm font-bold">Back</div>
       </div>
     </button>
   );

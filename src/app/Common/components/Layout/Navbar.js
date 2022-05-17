@@ -1,7 +1,7 @@
 import React from 'react';
 import { Transition } from '@headlessui/react';
 import MenuDisclosure from './MenuDisclosure';
-import * as links from '../../../constants/disclosure';
+import * as links from '../../../../constants/disclosure';
 
 const Navbar = (props) => {
   const { role, show } = props;
@@ -26,7 +26,7 @@ const Navbar = (props) => {
         <div className="space-y-0.5 px-1">
           {role === 'superadmin' && <MenuDisclosure links={links.userLinks} />}
           {(role === 'superadmin' || role === 'finance') && (
-            <MenuDisclosure links={links.keuanganLinks} />
+            <MenuDisclosure links={links.financeLinks} />
           )}
           {(role === 'superadmin' || role === 'marketing') && (
             <MenuDisclosure links={links.marketingLinks} />

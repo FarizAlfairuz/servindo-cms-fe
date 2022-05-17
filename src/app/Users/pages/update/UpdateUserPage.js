@@ -1,7 +1,7 @@
 import React from 'react';
 import BackButton from '../../../Common/components/Buttons/BackButton';
 import Button from '../../../Common/components/Buttons/Button';
-import InputForm from '../../../Common/components/InputForm';
+import InputForm from '../../../Common/components/Forms/InputForm';
 
 const UpdateUserPage = () => (
   <div className="space-y-4">

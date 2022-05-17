@@ -1,9 +1,11 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { useTable } from 'react-table';
+import Loader from '../Loader/Loader';
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, loading }) => {
   const tableInstance = useTable({ columns, data });
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -12,11 +14,15 @@ const Table = ({ columns, data }) => {
   return (
     <table
       {...getTableProps()}
-      className="overflow-hidden w-full border-separate rounded-md bg-white shadow"
+      className="overflow-hidden w-full border-separate rounded-xl bg-white shadow"
     >
-      <thead className="bg-cyan-800 text-white">
+      <thead className="bg-cyan-800 text-white rounded-t-xl">
         {headerGroups.map((headerGroup) => (
-          <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
+          <tr
+            key={headerGroup.id}
+            {...headerGroup.getHeaderGroupProps()}
+            className="rounded-t-lg"
+          >
             {headerGroup.headers.map((column) => (
               <th key={column.id} {...column.getHeaderProps()} className="py-2">
                 {column.render('Header')}
@@ -43,10 +49,16 @@ const Table = ({ columns, data }) => {
               </tr>
             );
           })
+        ) : loading ? (
+          <tr>
+            <td className="text-center py-8" colSpan={columns.length}>
+              <Loader />
+            </td>
+          </tr>
         ) : (
           <tr>
             <td className="text-center py-8" colSpan={columns.length}>
-              No data
+              No data found
             </td>
           </tr>
         )}

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import Navbar from './Navbar';
 import Header from './Header';
 
 const DashboardLayout = ({ children, role }) => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = useState(true);
 
-  const toggleSidebar = React.useCallback(() => {
+  const toggleSidebar = useCallback(() => {
     setIsOpen(!isOpen);
   });
 
