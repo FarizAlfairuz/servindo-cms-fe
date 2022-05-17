@@ -18,6 +18,10 @@ const UserAPI = {
   async updateSingleUser(id, data) {
     return API.put(`/users/${id}`, data);
   },
+
+  async deleteSingleUser(id) {
+    return API.delete(`/users/${id}`);
+  },
 };
 
 export default UserAPI;

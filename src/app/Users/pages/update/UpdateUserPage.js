@@ -8,11 +8,14 @@ import InputForm from '../../../Common/components/Forms/InputForm';
 import { useGetSingleUser } from '../../hooks/useFetchUsers';
 import { userSchema, userForm } from '../../constants/UserFormSchema';
 import useUserService from '../../hooks/useUserService';
+import ConfirmModal from '../../../Common/components/Modals/ConfirmModal';
+import useModal from '../../../Common/hooks/useModal';
 
 const UpdateUserPage = () => {
   const { id } = useParams();
-  const { user, loading } = useGetSingleUser(id);
-  const { updateState, updateUser } = useUserService();
+  const { user } = useGetSingleUser(id);
+  const { updateState, updateUser, deleteUser } = useUserService();
+  const { isOpen, openModal, closeModal } = useModal();
 
   const {
     register,
@@ -39,9 +42,20 @@ const UpdateUserPage = () => {
     updateUser(id, data);
   });
 
+  const deleteUserCallback = useCallback(() => {
+    deleteUser(id);
+  });
+
   return (
     <div className="space-y-4">
-      <BackButton />
+      <div className="flex justify-between">
+        <BackButton />
+        <div>
+          <Button size="small" variant="danger" onClick={openModal}>
+            Delete
+          </Button>
+        </div>
+      </div>
       <div className="flex justify-between mb-5">
         <h3 className="text-xl font-bold">Edit User {user && user.id}</h3>
       </div>
@@ -73,6 +87,13 @@ const UpdateUserPage = () => {
           </div>
         </div>
       </form>
+      <ConfirmModal
+        title="Delete this user?"
+        description="You can't undo this action once you deleted this user."
+        isOpen={isOpen}
+        onClickConfirm={deleteUserCallback}
+        closeModal={closeModal}
+      />
     </div>
   );
 };

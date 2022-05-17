@@ -13,6 +13,8 @@ import { alertFailed, alertSuccess } from '../../../redux/actions/alertAction';
 const useUserService = () => {
   const [createState, dispatchCreate] = useAPI();
   const [updateState, dispatchUpdate] = useAPI();
+  const [deleteState, dispatchDelete] = useAPI();
+
   const dispatch = useDispatch();
   const snackbarRef = useContext(AlertContext);
   const history = useHistory();
@@ -58,7 +60,34 @@ const useUserService = () => {
       });
   });
 
-  return { createState, createUser, updateState, updateUser };
+  const deleteUser = useCallback((id) => {
+    dispatchDelete({ type: FETCH_REQUEST });
+    UserAPI.deleteSingleUser(id)
+      .then((res) => {
+        const response = res.data;
+
+        dispatchDelete({ type: FETCH_SUCCESS, payload: response });
+        dispatch(alertSuccess(response.message));
+        history.push('/dashboard/user');
+        snackbarRef.current.show();
+      })
+      .catch((err) => {
+        const errorMsg = { message: err.response.data.message };
+
+        dispatchDelete({ type: FETCH_FAILED, payload: errorMsg });
+        dispatch(alertFailed(errorMsg));
+        snackbarRef.current.show();
+      });
+  });
+
+  return {
+    createState,
+    createUser,
+    updateState,
+    updateUser,
+    deleteState,
+    deleteUser,
+  };
 };
 
 export default useUserService;
