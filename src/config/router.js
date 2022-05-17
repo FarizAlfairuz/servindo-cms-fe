@@ -14,7 +14,7 @@ import {
   supportRoutes,
   userRoutes,
 } from './routes';
-import DashboardLayout from '../app/Common/components/DashboardLayout';
+import DashboardLayout from '../app/Common/components/Layout/DashboardLayout';
 
 const useRouter = () => {
   const user = useSelector((state) => state.authReducer.currentUser);

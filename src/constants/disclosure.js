@@ -1,13 +1,13 @@
 export const userLinks = {
   label: 'User',
   links: [
-    { name: 'Data Pengguna', to: '/dashboard/user' },
-    { name: 'Riwayat Perubahan', to: '/dashboard/riwayat-perubahan' },
+    { name: 'User List', to: '/dashboard/user' },
+    { name: 'Change History', to: '/dashboard/riwayat-perubahan' },
   ],
 };
 
-export const keuanganLinks = {
-  label: 'Keuangan',
+export const financeLinks = {
+  label: 'Finance',
   links: [
     { name: 'Data Pemasukan', to: '/dashboard/pemasukan' },
     { name: 'Data Pengeluaran', to: '/dashboard/pengeluaran' },

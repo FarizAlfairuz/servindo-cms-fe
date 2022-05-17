@@ -26,7 +26,7 @@ const getPagination = (cursor) => ({
 });
 
 export const getAllUsers = (query) => (dispatch) => {
-  dispatch(fetchUsersRequest);
+  dispatch(fetchUsersRequest());
   UserAPI.getAllUsers(query)
     .then((res) => {
       const { edge, cursor } = res.data.data;

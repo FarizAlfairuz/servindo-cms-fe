@@ -36,7 +36,7 @@ const logoutFailed = (error) => ({
 });
 
 export const login = (data) => (dispatch) => {
-  dispatch(fetchAuthRequest);
+  dispatch(fetchAuthRequest());
   AuthAPI.login(data)
     .then((res) => {
       const currentUser = res.data;
@@ -49,7 +49,7 @@ export const login = (data) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  dispatch(logoutRequest);
+  dispatch(logoutRequest());
   AuthAPI.logout()
     .then((res) => {
       const currentUser = res.data;
