@@ -1,5 +1,5 @@
 import React from 'react';
-import usePagination from '../../../hooks/usePagination';
+import usePagination from '../../Common/hooks/usePagination';
 import Table from '../../Common/components/Table/Table';
 import TablePagination from '../../Common/components/Table/TablePagination';
 import TableSize from '../../Common/components/Table/TableSize';
@@ -17,7 +17,6 @@ const UserTable = () => {
   };
 
   const { users, pagination, loading } = useGetAllUsers(query);
-
 
   return (
     <div className="space-y-4">

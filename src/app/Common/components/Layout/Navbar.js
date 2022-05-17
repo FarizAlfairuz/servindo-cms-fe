@@ -1,7 +1,7 @@
 import React from 'react';
 import { Transition } from '@headlessui/react';
 import MenuDisclosure from './MenuDisclosure';
-import * as links from '../../../../constants/disclosure';
+import * as links from '../../constants/disclosure';
 
 const Navbar = (props) => {
   const { role, show } = props;

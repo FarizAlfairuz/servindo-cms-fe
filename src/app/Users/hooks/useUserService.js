@@ -7,7 +7,7 @@ import useAPI, {
   FETCH_REQUEST,
   FETCH_SUCCESS,
   FETCH_FAILED,
-} from '../../../hooks/useAPI';
+} from '../../Common/hooks/useAPI';
 import { alertFailed, alertSuccess } from '../../../redux/actions/alertAction';
 
 const useUserService = () => {
