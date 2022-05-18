@@ -46,7 +46,7 @@ const useUserService = () => {
     UserAPI.updateSingleUser(id, data)
       .then((res) => {
         const response = res.data;
-        dispatchCreate({ type: FETCH_SUCCESS, payload: response });
+        dispatchUpdate({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
         history.push('/dashboard/user');
         snackbarRef.current.show();
@@ -54,7 +54,7 @@ const useUserService = () => {
       .catch((err) => {
         const errorMsg = { message: err.response.data.message };
 
-        dispatchCreate({ type: FETCH_FAILED, payload: errorMsg });
+        dispatchUpdate({ type: FETCH_FAILED, payload: errorMsg });
         dispatch(alertFailed(errorMsg));
         snackbarRef.current.show();
       });

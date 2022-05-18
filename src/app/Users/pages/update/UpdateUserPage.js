@@ -1,50 +1,30 @@
-import React, { useCallback, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import React, { useCallback, useState } from 'react';
+import { Tab } from '@headlessui/react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import BackButton from '../../../Common/components/Buttons/BackButton';
 import Button from '../../../Common/components/Buttons/Button';
-import InputForm from '../../../Common/components/Forms/InputForm';
 import { useGetSingleUser } from '../../hooks/useFetchUsers';
-import { userSchema, userForm } from '../../constants/UserFormSchema';
 import useUserService from '../../hooks/useUserService';
 import ConfirmModal from '../../../Common/components/Modals/ConfirmModal';
 import useModal from '../../../Common/hooks/useModal';
+import EditUserInfo from '../../components/EditUserInfo';
+import Tabs from '../../../Common/components/Tab/Tabs';
+import EditPassword from '../../components/EditPassword';
 
 const UpdateUserPage = () => {
   const { id } = useParams();
   const { user } = useGetSingleUser(id);
-  const { updateState, updateUser, deleteUser } = useUserService();
+  const { deleteUser } = useUserService();
   const { isOpen, openModal, closeModal } = useModal();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(userSchema),
-    mode: 'onTouched',
-  });
-
-  useEffect(() => {
-    if (user) {
-      reset({
-        username: user.username,
-        password: '',
-        confirmPassword: '',
-        role: user.role,
-      });
-    }
-  }, [user]);
-
-  const onSubmitHandlerCallback = useCallback((data) => {
-    updateUser(id, data);
-  });
 
   const deleteUserCallback = useCallback(() => {
     deleteUser(id);
   });
+
+  const tabList = [
+    { tabTitle: 'User Info', tabChildren: <EditUserInfo user={user} /> },
+    { tabTitle: 'Password', tabChildren: <EditPassword user={user} /> },
+  ];
 
   return (
     <div className="space-y-4">
@@ -60,33 +40,8 @@ const UpdateUserPage = () => {
         <h3 className="text-xl font-bold">Edit User {user && user.id}</h3>
       </div>
 
-      <form
-        className="w-1/2 space-y-4"
-        onSubmit={handleSubmit(onSubmitHandlerCallback)}
-      >
-        <div className="space-y-2">
-          {userForm.map((input) => (
-            <InputForm
-              key={input.name}
-              type={input.type}
-              label={input.label}
-              name={input.name}
-              disabled={updateState.loading}
-              register={register}
-              error={errors}
-              options={input.options}
-              requierd
-            />
-          ))}
-        </div>
-        <div className="flex justify-end">
-          <div>
-            <Button size="small" submit>
-              Submit
-            </Button>
-          </div>
-        </div>
-      </form>
+      <Tabs tabList={tabList} />
+
       <ConfirmModal
         title="Delete this user?"
         description="You can't undo this action once you deleted this user."
