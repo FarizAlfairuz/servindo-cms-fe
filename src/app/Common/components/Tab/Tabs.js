@@ -28,7 +28,7 @@ const Tabs = (props) => {
             </Tab>
           ))}
         </Tab.List>
-        <Tab.Panels className="mt-2">
+        <Tab.Panels className="mt-2 focus:outline-none">
           {tabList.map((tab) => (
             <Tab.Panel key={tab.tabTitle}>{tab.tabChildren}</Tab.Panel>
           ))}

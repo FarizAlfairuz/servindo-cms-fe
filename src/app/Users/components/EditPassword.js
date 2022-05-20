@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import useUserService from '../hooks/useUserService';
@@ -24,10 +24,7 @@ const EditPassword = (props) => {
 
   const onSubmitHandlerCallback = useCallback((data) => {
     updateUser(user.id, data);
-    console.log(data)
   });
-
-  console.log(updateState);
 
   return (
     <form

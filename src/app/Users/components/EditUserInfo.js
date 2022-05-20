@@ -31,10 +31,7 @@ const EditUserInfo = (props) => {
 
   const onSubmitHandlerCallback = useCallback((data) => {
     updateUser(user.id, data);
-    console.log(data)
   });
-
-  console.log(updateState);
 
   return (
     <form

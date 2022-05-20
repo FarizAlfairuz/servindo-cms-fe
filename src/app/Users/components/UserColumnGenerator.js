@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PencilAltIcon } from '@heroicons/react/solid';
+import toFirstLetterCapitalize from '../../../helpers/toFirstLetterCapitalize';
 
 const useUserColumnGenerator = () => {
   const column = React.useMemo(
@@ -12,11 +13,16 @@ const useUserColumnGenerator = () => {
       {
         Header: 'Role',
         accessor: 'role',
+        Cell: (props) => {
+          const { row } = props;
+          return toFirstLetterCapitalize(row.original.role);
+        },
       },
       {
         Header: 'Action',
         Cell: (props) => {
           const { row } = props;
+
           return (
             <div className="flex justify-center">
               <Link

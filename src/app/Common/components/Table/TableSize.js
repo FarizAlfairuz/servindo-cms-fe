@@ -8,7 +8,7 @@ const TableSize = (props) => {
       <span className="">
         Show
         <select
-          className="mx-1 rounded-md p-1 focus:outline-none shadow"
+          className="mx-1 rounded p-1 focus:outline-none shadow"
           value={pageSize}
           onChange={(e) => setPageSize(parseInt(e.target.value, 10))}
         >
