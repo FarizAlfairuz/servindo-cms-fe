@@ -7,7 +7,7 @@ export const useGetAllUsers = (query) => {
 
   useEffect(() => {
     dispatch(getAllUsers(query));
-  }, [query.limit, query.page]);
+  }, [query]);
 
   const users = useSelector((state) => state.userReducer.users);
   const pagination = useSelector((state) => state.paginationReducer.pagination);
