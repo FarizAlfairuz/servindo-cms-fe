@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   routes,
   financeRoutes,
@@ -15,11 +15,31 @@ import {
   userRoutes,
 } from './routes';
 import DashboardLayout from '../app/Common/components/Layout/DashboardLayout';
+import API from '../api/API';
+import { logout } from '../redux';
 
 const useRouter = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.authReducer.currentUser);
 
   const role = user && user.data ? user.data.role : '';
+
+  API.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (
+        error.response &&
+        error.response.status === 401 &&
+        error.response.data.message === 'Not authenticated.'
+      ) {
+        dispatch(logout());
+
+        return Promise.reject();
+      }
+
+      return Promise.reject(error);
+    }
+  );
 
   return (
     <Router>

@@ -1,7 +1,8 @@
 import { LogoutIcon } from '@heroicons/react/outline';
 import { MenuIcon } from '@heroicons/react/solid';
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { AlertContext } from '../../../../contexts/AlertContext';
 import { logout } from '../../../../redux';
 
 const Header = (props) => {
@@ -11,9 +12,11 @@ const Header = (props) => {
   );
 
   const dispatch = useDispatch();
+  const snackbarRef = useContext(AlertContext);
 
   const logoutCallback = useCallback(() => {
     dispatch(logout());
+    snackbarRef.current.show();
   }, [dispatch]);
 
   return (

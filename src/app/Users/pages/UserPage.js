@@ -4,8 +4,8 @@ import UserTable from '../components/UserTable';
 
 const UserPage = () => (
   <div>
-    <div className="flex justify-between mb-5">
-      <h3 className="text-xl font-bold">User List</h3>
+    <div className="flex items-center justify-between mb-5">
+      <h3 className="text-2xl font-bold align-middle">User List</h3>
       <Button to="/dashboard/user/create">Create New User</Button>
     </div>
     <UserTable />

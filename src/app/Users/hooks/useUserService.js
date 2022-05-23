@@ -32,7 +32,7 @@ const useUserService = () => {
       .catch((err) => {
         const errorMsg = {
           message: err.response.data.message,
-          description: err.response.data.errors.fields.username.message,
+          description: err.message,
         };
 
         dispatchCreate({ type: FETCH_FAILED, payload: errorMsg });

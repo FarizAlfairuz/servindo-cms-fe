@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import { login } from '../../../redux';
 import InputForm from '../../Common/components/Forms/InputForm';
 import Button from '../../Common/components/Buttons/Button';
+import { AlertContext } from '../../../contexts/AlertContext';
 
 const schema = yup.object().shape({
   username: yup.string().required('Username is required'),
@@ -17,10 +18,12 @@ const schema = yup.object().shape({
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const snackbarRef = useContext(AlertContext);
 
   const onSubmitHandlerCallback = useCallback(
     (data) => {
       dispatch(login(data));
+      snackbarRef.current.show();
     },
     [dispatch, login]
   );

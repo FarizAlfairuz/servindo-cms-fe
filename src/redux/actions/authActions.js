@@ -7,6 +7,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAILED,
 } from '../types/authTypes';
+import { alertFailed, alertSuccess } from './alertAction';
 
 const fetchAuthRequest = () => ({
   type: LOGIN_REQUEST,
@@ -41,10 +42,18 @@ export const login = (data) => (dispatch) => {
     .then((res) => {
       const currentUser = res.data;
       dispatch(fetchAuthSuccess(currentUser));
+      dispatch(alertSuccess(currentUser.message));
     })
     .catch((err) => {
       const errorMsg = err.message;
+
       dispatch(fetchAuthFailed(errorMsg));
+      dispatch(
+        alertFailed({
+          message: 'Login failed!',
+          description: 'Incorrect username or password.',
+        })
+      );
     });
 };
 
@@ -55,10 +64,12 @@ export const logout = () => (dispatch) => {
       const currentUser = res.data;
 
       dispatch(logoutSuccess(currentUser));
+      dispatch(alertSuccess(currentUser.message));
     })
     .catch((err) => {
       const errorMsg = err.message;
 
       dispatch(logoutFailed(errorMsg));
+      dispatch(alertFailed({ message: 'Logout failed!' }));
     });
 };
