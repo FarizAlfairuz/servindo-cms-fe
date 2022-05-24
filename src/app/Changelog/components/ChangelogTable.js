@@ -38,19 +38,21 @@ const ChangelogTable = () => {
   }, [changelog]);
 
   return (
-    <div className="space-y-4 mt-6 overflow-x-auto">
+    <div className="space-y-4 mt-6 ">
       <div className="flex items-center justify-between py-2">
         <TableSize pageSize={pageSize} setPageSize={setPageSize} />
         <SearchBar onChange={searchCallbackHandler} />
       </div>
-      <Table data={changelog} columns={column} loading={loading} />
-      <TablePagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        hasNext={pagination.hasNext}
-        hasPrev={pagination.hasPrev}
-        totalPage={pagination.totalPages}
-      />
+      <div className="overflow-x-scroll">
+        <Table data={changelog} columns={column} loading={loading} />
+        <TablePagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          hasNext={pagination.hasNext}
+          hasPrev={pagination.hasPrev}
+          totalPage={pagination.totalPages}
+        />
+      </div>
     </div>
   );
 };

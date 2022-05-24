@@ -43,14 +43,16 @@ const UserTable = () => {
         <TableSize pageSize={pageSize} setPageSize={setPageSize} />
         <SearchBar onChange={searchCallbackHandler} />
       </div>
-      <Table data={users} columns={column} loading={loading} />
-      <TablePagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        hasNext={pagination.hasNext}
-        hasPrev={pagination.hasPrev}
-        totalPage={pagination.totalPages}
-      />
+      <div className="overflow-x-scroll">
+        <Table data={users} columns={column} loading={loading} />
+        <TablePagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          hasNext={pagination.hasNext}
+          hasPrev={pagination.hasPrev}
+          totalPage={pagination.totalPages}
+        />
+      </div>
     </div>
   );
 };
