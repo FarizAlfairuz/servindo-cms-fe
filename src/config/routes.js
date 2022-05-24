@@ -44,11 +44,21 @@ import {
 import { UpdateServiceLogPage } from '../app/Support/pages/update';
 import { UpdateUserPage } from '../app/Users/pages/update';
 
+import { ChangelogPage } from '../app/Changelog/pages';
+
 export const routes = [
   {
     name: 'LoginPage',
     path: () => '/login',
     component: LoginPage,
+  },
+];
+
+export const changelogRoutes = [
+  {
+    name: 'ChangelogPage',
+    path: () => '/dashboard/changelog',
+    component: ChangelogPage,
   },
 ];
 

@@ -41,8 +41,8 @@ export const login = (data) => (dispatch) => {
   AuthAPI.login(data)
     .then((res) => {
       const currentUser = res.data;
-      dispatch(fetchAuthSuccess(currentUser));
       dispatch(alertSuccess(currentUser.message));
+      dispatch(fetchAuthSuccess(currentUser));
     })
     .catch((err) => {
       const errorMsg = err.message;

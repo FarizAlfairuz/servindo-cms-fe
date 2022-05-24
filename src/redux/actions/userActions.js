@@ -4,7 +4,7 @@ import {
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILED,
 } from '../types/userTypes';
-import { PAGINATION_SUCCESS } from '../types/paginationTypes';
+import { getPagination } from './paginationAction';
 
 const fetchUsersRequest = () => ({
   type: FETCH_USERS_REQUEST,
@@ -18,11 +18,6 @@ const fetchUsersSuccess = (users) => ({
 const fetchUsersFailed = (error) => ({
   type: FETCH_USERS_FAILED,
   payload: error,
-});
-
-const getPagination = (cursor) => ({
-  type: PAGINATION_SUCCESS,
-  payload: cursor,
 });
 
 export const getAllUsers = (query) => (dispatch) => {

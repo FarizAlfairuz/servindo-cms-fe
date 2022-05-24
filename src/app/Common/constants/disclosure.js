@@ -2,7 +2,7 @@ export const userLinks = {
   label: 'User',
   links: [
     { name: 'User List', to: '/dashboard/user' },
-    { name: 'Change History', to: '/dashboard/riwayat-perubahan' },
+    { name: 'Changelog', to: '/dashboard/changelog' },
   ],
 };
 

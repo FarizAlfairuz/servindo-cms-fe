@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useContext } from 'react';
 import {
   routes,
   financeRoutes,
@@ -13,13 +14,17 @@ import {
   purchasingRoutes,
   supportRoutes,
   userRoutes,
+  changelogRoutes,
 } from './routes';
+import { NotFoundPage } from '../app/Common/pages';
 import DashboardLayout from '../app/Common/components/Layout/DashboardLayout';
 import API from '../api/API';
 import { logout } from '../redux';
+import { AlertContext } from '../contexts/AlertContext';
 
 const useRouter = () => {
   const dispatch = useDispatch();
+  const snackbarRef = useContext(AlertContext);
   const user = useSelector((state) => state.authReducer.currentUser);
 
   const role = user && user.data ? user.data.role : '';
@@ -33,6 +38,7 @@ const useRouter = () => {
         error.response.data.message === 'Not authenticated.'
       ) {
         dispatch(logout());
+        snackbarRef.current.show();
 
         return Promise.reject();
       }
@@ -98,6 +104,16 @@ const useRouter = () => {
             role={role}
           />
         ))}
+        {changelogRoutes.map((route) => (
+          <CommonRoutes
+            exact
+            key={route.name}
+            path={route.path()}
+            component={route.component}
+            role={role}
+          />
+        ))}
+
         <Route exact path="/">
           {role ? <Redirect to="/dashboard" /> : <Redirect to="/login" />}
         </Route>
@@ -116,8 +132,10 @@ const useRouter = () => {
             <Redirect to="/login" />
           )}
         </Route>
+
+        <Route path="/not-found" component={NotFoundPage} />
         <Route path="*">
-          <Redirect to="/" />
+          <Redirect to="/not-found" />
         </Route>
       </Switch>
     </Router>
@@ -128,6 +146,21 @@ const AuthRoutes = ({ role, component: Component, ...rest }) => (
   <Route
     {...rest}
     render={() => (!role ? <Component /> : <Redirect to="/dashboard" />)}
+  />
+);
+
+const CommonRoutes = ({ role, component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={() =>
+      role ? (
+        <DashboardLayout role={role}>
+          <Component />
+        </DashboardLayout>
+      ) : (
+        <Redirect to="/dashboard" />
+      )
+    }
   />
 );
 

@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect } from 'react';
-import usePagination from '../../Common/hooks/usePagination';
+import SearchBar from '../../Common/components/Search/SearchBar';
 import Table from '../../Common/components/Table/Table';
 import TablePagination from '../../Common/components/Table/TablePagination';
 import TableSize from '../../Common/components/Table/TableSize';
-import { useGetAllUsers } from '../hooks/useFetchUsers';
-import useUserColumnGenerator from './UserColumnGenerator';
-import SearchBar from '../../Common/components/Search/SearchBar';
+import usePagination from '../../Common/hooks/usePagination';
+import { useGetChangelog } from '../hooks/useFetchChangelog';
+import useChangelogColumnGenerator from './ChangelogColumnGenerator';
 
-const UserTable = () => {
-  const { column } = useUserColumnGenerator();
+const ChangelogTable = () => {
+  const { column } = useChangelogColumnGenerator();
 
   const {
     currentPage,
@@ -19,7 +19,7 @@ const UserTable = () => {
     setQuery,
   } = usePagination();
 
-  const { users, pagination, loading } = useGetAllUsers(query);
+  const { changelog, pagination, loading } = useGetChangelog(query);
 
   const searchCallbackHandler = useCallback((data) => {
     setQuery({
@@ -28,22 +28,22 @@ const UserTable = () => {
   });
 
   useEffect(() => {
-    if (users.length > 10) {
+    if (changelog.length > 10) {
       setQuery({
         ...query,
         limit: pageSize,
         page: currentPage,
       });
     }
-  }, [users]);
+  }, [changelog]);
 
   return (
-    <div className="space-y-4 mt-6">
+    <div className="space-y-4 mt-6 overflow-x-auto">
       <div className="flex items-center justify-between py-2">
         <TableSize pageSize={pageSize} setPageSize={setPageSize} />
         <SearchBar onChange={searchCallbackHandler} />
       </div>
-      <Table data={users} columns={column} loading={loading} />
+      <Table data={changelog} columns={column} loading={loading} />
       <TablePagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
@@ -55,4 +55,4 @@ const UserTable = () => {
   );
 };
 
-export default UserTable;
+export default ChangelogTable;
