@@ -43,7 +43,7 @@ const UserTable = () => {
         <TableSize pageSize={pageSize} setPageSize={setPageSize} />
         <SearchBar onChange={searchCallbackHandler} />
       </div>
-      <div className="overflow-x-scroll">
+      <div className="overflow-x-auto">
         <Table data={users} columns={column} loading={loading} />
         <TablePagination
           currentPage={currentPage}

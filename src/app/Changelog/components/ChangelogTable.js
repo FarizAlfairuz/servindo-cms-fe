@@ -43,7 +43,7 @@ const ChangelogTable = () => {
         <TableSize pageSize={pageSize} setPageSize={setPageSize} />
         <SearchBar onChange={searchCallbackHandler} />
       </div>
-      <div className="overflow-x-scroll">
+      <div className="overflow-x-auto">
         <Table data={changelog} columns={column} loading={loading} />
         <TablePagination
           currentPage={currentPage}
