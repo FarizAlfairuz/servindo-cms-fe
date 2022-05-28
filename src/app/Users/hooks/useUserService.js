@@ -26,7 +26,7 @@ const useUserService = () => {
         const response = res.data;
         dispatchCreate({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
-        history.push('/dashboard/user');
+        history.push('/dashboard/users');
         snackbarRef.current.show();
       })
       .catch((err) => {
@@ -48,7 +48,7 @@ const useUserService = () => {
         const response = res.data;
         dispatchUpdate({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
-        history.push('/dashboard/user');
+        history.push('/dashboard/users');
         snackbarRef.current.show();
       })
       .catch((err) => {
@@ -68,7 +68,7 @@ const useUserService = () => {
 
         dispatchDelete({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
-        history.push('/dashboard/user');
+        history.push('/dashboard/users');
         snackbarRef.current.show();
       })
       .catch((err) => {

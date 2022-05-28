@@ -27,6 +27,7 @@ import {
 } from '../app/Purchasing/pages/create';
 import { CreateServiceLogPage } from '../app/Support/pages/create';
 import { CreateUserPage } from '../app/Users/pages/create';
+import { CreateItemPage } from '../app/Item/pages/create';
 
 import {
   UpdateOperationalPage,
@@ -43,8 +44,11 @@ import {
 } from '../app/Purchasing/pages/update';
 import { UpdateServiceLogPage } from '../app/Support/pages/update';
 import { UpdateUserPage } from '../app/Users/pages/update';
+import { UpdateItemPage } from '../app/Item/pages/update';
 
 import { ChangelogPage } from '../app/Changelog/pages';
+
+import { ItemPage } from '../app/Item/pages';
 
 export const routes = [
   {
@@ -59,6 +63,24 @@ export const changelogRoutes = [
     name: 'ChangelogPage',
     path: () => '/dashboard/changelog',
     component: ChangelogPage,
+  },
+];
+
+export const itemRoutes = [
+  {
+    name: 'ItemPage',
+    path: () => '/dashboard/items',
+    component: ItemPage,
+  },
+  {
+    name: 'CreateItemPage',
+    path: () => '/dashboard/items/create',
+    component: CreateItemPage,
+  },
+  {
+    name: 'UpdateItemPage',
+    path: () => '/dashboard/items/:id',
+    component: UpdateItemPage,
   },
 ];
 
@@ -207,17 +229,17 @@ export const supportRoutes = [
 export const userRoutes = [
   {
     name: 'UserPage',
-    path: () => '/dashboard/user',
+    path: () => '/dashboard/users',
     component: UserPage,
   },
   {
     name: 'CreateUserPage',
-    path: () => '/dashboard/user/create',
+    path: () => '/dashboard/users/create',
     component: CreateUserPage,
   },
   {
     name: 'UpdateUserPage',
-    path: () => '/dashboard/user/:id',
+    path: () => '/dashboard/users/:id',
     component: UpdateUserPage,
   },
 ];

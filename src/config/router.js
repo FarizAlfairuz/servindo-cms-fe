@@ -15,6 +15,7 @@ import {
   supportRoutes,
   userRoutes,
   changelogRoutes,
+  itemRoutes,
 } from './routes';
 import { NotFoundPage } from '../app/Common/pages';
 import DashboardLayout from '../app/Common/components/Layout/DashboardLayout';
@@ -113,13 +114,22 @@ const useRouter = () => {
             role={role}
           />
         ))}
+        {itemRoutes.map((route) => (
+          <ItemRoutes
+            exact
+            key={route.name}
+            path={route.path()}
+            component={route.component}
+            role={role}
+          />
+        ))}
 
         <Route exact path="/">
           {role ? <Redirect to="/dashboard" /> : <Redirect to="/login" />}
         </Route>
         <Route exact path="/dashboard">
           {role === 'superadmin' ? (
-            <Redirect to="/dashboard/user" />
+            <Redirect to="/dashboard/users" />
           ) : role === 'finance' ? (
             <Redirect to="/dashboard/pemasukan" />
           ) : role === 'marketing' ? (
@@ -229,6 +239,21 @@ const SupportRoutes = ({ role, component: Component, ...rest }) => (
     {...rest}
     render={() =>
       role === 'superadmin' || role === 'support' ? (
+        <DashboardLayout role={role}>
+          <Component />
+        </DashboardLayout>
+      ) : (
+        <Redirect to="/dashboard" />
+      )
+    }
+  />
+);
+
+const ItemRoutes = ({ role, component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={() =>
+      role === 'superadmin' || role === 'marketing' || role === 'purchasing' ? (
         <DashboardLayout role={role}>
           <Component />
         </DashboardLayout>

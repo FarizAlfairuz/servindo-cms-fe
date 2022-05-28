@@ -26,7 +26,7 @@ const useUserColumnGenerator = () => {
           return (
             <div className="flex justify-center">
               <Link
-                to={`/dashboard/user/${row.original.id}`}
+                to={`/dashboard/users/${row.original.id}`}
                 className="hover:cursor-pointer inline-flex space-x-1 items-center hover:text-cyan-700"
               >
                 <PencilAltIcon className="w-4 h-4" />

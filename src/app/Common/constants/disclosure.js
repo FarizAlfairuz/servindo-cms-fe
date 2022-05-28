@@ -1,7 +1,7 @@
 export const userLinks = {
   label: 'User',
   links: [
-    { name: 'User List', to: '/dashboard/user' },
+    { name: 'User List', to: '/dashboard/users' },
     { name: 'Changelog', to: '/dashboard/changelog' },
   ],
 };
@@ -41,5 +41,13 @@ export const supportLinks = {
   links: [
     { name: 'Riwayat Service', to: '/dashboard/riwayat-service' },
     { name: 'Riwayat Perubahan', to: '/dashboard/riwayat-perubahan' },
+  ],
+};
+
+export const itemLinks = {
+  label: 'Items',
+  links: [
+    { name: 'Item List', to: '/dashboard/items' },
+    { name: 'Changelog', to: '/dashboard/changelog' },
   ],
 };
