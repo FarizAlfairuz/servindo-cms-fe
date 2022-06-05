@@ -193,7 +193,7 @@ export const purchasingRoutes = [
   },
   {
     name: 'CreateVendorPage',
-    path: () => '/dashboard/add/vendor',
+    path: () => '/dashboard/vendor/create',
     component: CreateVendorPage,
   },
   {
