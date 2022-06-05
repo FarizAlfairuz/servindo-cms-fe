@@ -1,16 +1,18 @@
 import React from 'react';
-import Table from '../../Common/components/Table/Table';
-import useOutcomeColumnGenerator from '../../Finance/components/OutcomeColumnGenerator';
+import Button from '../../Common/components/Buttons/Button';
+import PurchasingTable from '../components/PurchasingTable';
 
 const PurchasePage = () => {
-  const { column, data } = useOutcomeColumnGenerator();
-
+  const a = 0;
   return (
-    <div>
-      <div>
-        <h3 className="text-xl font-bold">Data Pembelian</h3>
+    <div className="overflow-x-auto">
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="text-2xl font-bold align-middle">Purchase List</h3>
+        <Button to="/dashboard/users/create">Create New User</Button>
       </div>
-      <Table columns={column} data={data} />
+      <PurchasingTable />
+      {/* <div className="max-w-max">
+      </div> */}
     </div>
   );
 };

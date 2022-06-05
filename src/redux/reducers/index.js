@@ -4,6 +4,7 @@ import userReducer from './userReducer';
 import paginationReducer from './paginationReducer';
 import alertReducer from './alertReducer';
 import changelogReducer from './changelogReducer';
+import purchaseReducer from './purchaseReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   paginationReducer,
   alertReducer,
   changelogReducer,
+  purchaseReducer,
 });
 
 export default rootReducer;

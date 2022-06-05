@@ -10,6 +10,7 @@ const DashboardLayout = ({ children, role }) => {
   const toggleSidebar = useCallback(() => {
     setIsOpen(!isOpen);
   });
+
   useEffect(() => {
     if (width < 1112) {
       setIsOpen(false);
@@ -19,7 +20,7 @@ const DashboardLayout = ({ children, role }) => {
   }, [width]);
 
   return (
-    <div className="flex w-full bg-slate-50">
+    <div className="flex w-screen bg-slate-50">
       <Navbar show={isOpen} role={role} />
       <div className="h-full w-full">
         <Header toggleSidebar={toggleSidebar} />

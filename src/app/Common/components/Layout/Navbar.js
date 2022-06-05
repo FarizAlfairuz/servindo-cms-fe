@@ -2,6 +2,7 @@ import React from 'react';
 import { Transition } from '@headlessui/react';
 import MenuDisclosure from './MenuDisclosure';
 import * as links from '../../constants/disclosure';
+import logo from '../../../../assets/images/logo_servindo.png';
 
 const Navbar = (props) => {
   const { role, show } = props;
@@ -17,11 +18,8 @@ const Navbar = (props) => {
       leaveTo="-translate-x-full"
     >
       <div className="h-screen w-80 bg-white sticky left-0 top-0 shadow-xl space-y-2 no-scrollbar overflow-y-auto">
-        <div className="px-12 py-8">
-          <img
-            src="https://www.nicepng.com/png/full/248-2489738_business-company-logo-template-your-company-logo-png.png"
-            alt=""
-          />
+        <div className="px-12 py-6 flex justify-center">
+          <img src={logo} className="w-36 h-36" alt="" />
         </div>
         <div className="space-y-0.5 px-1">
           {role === 'superadmin' && <MenuDisclosure links={links.userLinks} />}
