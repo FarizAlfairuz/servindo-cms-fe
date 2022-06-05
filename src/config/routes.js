@@ -61,7 +61,7 @@ export const routes = [
 export const changelogRoutes = [
   {
     name: 'ChangelogPage',
-    path: () => '/dashboard/changelog',
+    path: () => '/dashboard/changelog/:category',
     component: ChangelogPage,
   },
 ];
@@ -178,7 +178,7 @@ export const marketingRoutes = [
 export const purchasingRoutes = [
   {
     name: 'PurchasePage',
-    path: () => '/dashboard/pembelian',
+    path: () => '/dashboard/purchase',
     component: PurchasePage,
   },
   {
@@ -188,7 +188,7 @@ export const purchasingRoutes = [
   },
   {
     name: 'CreatePurchasePage',
-    path: () => '/dashboard/add/penjualan',
+    path: () => '/dashboard/purchase/create',
     component: CreatePurchasePage,
   },
   {

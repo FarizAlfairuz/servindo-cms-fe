@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import SearchBar from '../../Common/components/Search/SearchBar';
 import Table from '../../Common/components/Table/Table';
 import TablePagination from '../../Common/components/Table/TablePagination';
@@ -9,6 +10,7 @@ import useChangelogColumnGenerator from './ChangelogColumnGenerator';
 
 const ChangelogTable = () => {
   const { column } = useChangelogColumnGenerator();
+  const { category } = useParams();
 
   const {
     currentPage,
@@ -18,6 +20,13 @@ const ChangelogTable = () => {
     query,
     setQuery,
   } = usePagination();
+
+  useEffect(() => {
+    setQuery({
+      ...query,
+      category,
+    });
+  }, [category]);
 
   const { changelog, pagination, loading } = useGetChangelog(query);
 

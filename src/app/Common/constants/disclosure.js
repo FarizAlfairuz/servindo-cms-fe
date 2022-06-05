@@ -2,7 +2,7 @@ export const userLinks = {
   label: 'User',
   links: [
     { name: 'User List', to: '/dashboard/users' },
-    { name: 'Changelog', to: '/dashboard/changelog' },
+    { name: 'Changelog', to: '/dashboard/changelog/user' },
   ],
 };
 
@@ -30,9 +30,9 @@ export const marketingLinks = {
 export const purchasingLinks = {
   label: 'Purchasing',
   links: [
-    { name: 'Data Pembelian', to: '/dashboard/pembelian' },
-    { name: 'Data Vendor', to: '/dashboard/vendor' },
-    { name: 'Riwayat Perubahan', to: '/dashboard/riwayat-perubahan' },
+    { name: 'Purchase List', to: '/dashboard/purchase' },
+    { name: 'Vendor List', to: '/dashboard/vendor' },
+    { name: 'Changelog', to: '/dashboard/changelog/purchasing' },
   ],
 };
 

@@ -18,8 +18,12 @@ const Navbar = (props) => {
       leaveTo="-translate-x-full"
     >
       <div className="h-screen w-80 bg-white sticky left-0 top-0 shadow-xl space-y-2 no-scrollbar overflow-y-auto">
-        <div className="px-12 py-6 flex justify-center">
-          <img src={logo} className="w-36 h-36" alt="" />
+        <div className="px-12 py-6 flex justify-center space-x-2">
+          <img src={logo} className="w-20 h-20" alt="" />
+          <div className="flex flex-col justify-center">
+            <h5 className="font-bold text-xl">CV. Servindo</h5>
+            <h6 className="font-semibold text-sm italic">General and Sevice</h6>
+          </div>
         </div>
         <div className="space-y-0.5 px-1">
           {role === 'superadmin' && <MenuDisclosure links={links.userLinks} />}
