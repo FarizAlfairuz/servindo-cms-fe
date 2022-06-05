@@ -5,6 +5,7 @@ import paginationReducer from './paginationReducer';
 import alertReducer from './alertReducer';
 import changelogReducer from './changelogReducer';
 import purchaseReducer from './purchaseReducer';
+import vendorReducer from './vendorReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   alertReducer,
   changelogReducer,
   purchaseReducer,
+  vendorReducer,
 });
 
 export default rootReducer;

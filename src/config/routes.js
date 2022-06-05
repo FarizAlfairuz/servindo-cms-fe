@@ -203,7 +203,7 @@ export const purchasingRoutes = [
   },
   {
     name: 'UpdateVendorPage',
-    path: () => '/dashboard/update/vendor',
+    path: () => '/dashboard/vendor/:id',
     component: UpdateVendorPage,
   },
 ];
