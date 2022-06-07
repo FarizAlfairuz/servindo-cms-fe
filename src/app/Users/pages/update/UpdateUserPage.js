@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams } from 'react-router-dom';
 import BackButton from '../../../Common/components/Buttons/BackButton';
 import Button from '../../../Common/components/Buttons/Button';
 import { useGetSingleUser } from '../../hooks/useFetchUsers';
