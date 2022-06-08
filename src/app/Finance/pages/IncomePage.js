@@ -1,18 +1,13 @@
 import React from 'react';
-import Table from '../../Common/components/Table/Table';
-import useIncomeColumnGenerator from '../components/IncomeColumnGenerator';
+import IncomeTable from '../components/IncomeTable';
 
-const IncomePage = () => {
-  const { column, data } = useIncomeColumnGenerator();
-
-  return (
+const IncomePage = () => (
+  <div>
     <div>
-      <div>
-        <h3 className="text-xl font-bold">Data Pemasukan</h3>
-      </div>
-      <Table columns={column} data={data} />
+      <h3 className="text-xl font-bold">Incomes</h3>
     </div>
-  );
-};
+    <IncomeTable />
+  </div>
+);
 
 export default IncomePage;

@@ -6,7 +6,6 @@ import InputForm from '../../../Common/components/Forms/InputForm';
 import useSaleService from '../../hooks/useSalesService';
 import { useGetAllCustomers } from '../../hooks/useFetchCustomers';
 import { getTime } from '../../../../helpers/getTime';
-import usePagination from '../../../Common/hooks/usePagination';
 import Button from '../../../Common/components/Buttons/Button';
 import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
 import { useGetAllItems } from '../../../Item/hooks/useFetchItems';
@@ -30,8 +29,6 @@ const ItemSaleTab = () => {
     search: null,
   });
 
-  //   const { query, setQuery } = usePagination();
-
   const { createState, createSale } = useSaleService();
   const { customers } = useGetAllCustomers(customerQuery);
   const { items } = useGetAllItems(itemQuery);
@@ -49,7 +46,6 @@ const ItemSaleTab = () => {
         id: data.customerId,
       },
     };
-    console.log(saleData);
     createSale(saleData);
   });
 

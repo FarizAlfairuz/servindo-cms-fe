@@ -1,47 +1,48 @@
 import React from 'react';
-import MOCK_DATA_INCOME from '../../../api/mock_data/MOCK_DATA_INCOME.json';
+import toFirstLetterCapitalize from '../../../helpers/toFirstLetterCapitalize';
+import toRupiah from '../../../helpers/toRupiah';
 
 const useIncomeColumnGenerator = () => {
-  const data = React.useMemo(() => MOCK_DATA_INCOME, []);
-
   const column = React.useMemo(
     () => [
       {
-        Header: 'No Invoice',
-        accessor: 'invoice',
+        Header: 'Date',
+        accessor: 'date',
       },
       {
-        Header: 'Tanggal',
-        accessor: 'tanggal',
-      },
-      {
-        Header: 'Customer',
-        accessor: 'customer',
-      },
-      {
-        Header: 'Nama Unit',
-        accessor: 'unit',
+        Header: 'Type',
+        accessor: 'type',
+        Cell: (props) => {
+          const { row } = props;
+          return toFirstLetterCapitalize(row.original.type);
+        },
       },
       {
         Header: 'QTY',
         accessor: 'quantity',
       },
       {
-        Header: 'Harga',
-        accessor: 'harga',
+        Header: 'Price',
+        accessor: 'price',
+        Cell: (props) => {
+          const { row } = props;
+
+          return toRupiah(row.original.price);
+        },
       },
       {
         Header: 'Gross',
         accessor: 'gross',
-      },
-      {
-        Header: 'Aksi',
-        Cell: () => <div>Aksi</div>,
+        Cell: (props) => {
+          const { row } = props;
+
+          return toRupiah(row.original.gross);
+        },
       },
     ],
     []
   );
-  return { column, data };
+  return { column };
 };
 
 export default useIncomeColumnGenerator;
