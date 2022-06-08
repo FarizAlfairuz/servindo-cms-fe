@@ -1,9 +1,13 @@
 import React from 'react';
 import Tabs from '../../Common/components/Tab/Tabs';
 import IncomeTable from '../components/IncomeTable';
+import OtherIncomeTable from '../components/OtherIncomeTable';
 
 const IncomePage = () => {
-  const tabList = [{ tabTitle: 'Purchases', tabChildren: <IncomeTable /> }];
+  const tabList = [
+    { tabTitle: 'Sales', tabChildren: <IncomeTable /> },
+    { tabTitle: 'Other Income', tabChildren: <OtherIncomeTable /> },
+  ];
 
   return (
     <div className="space-y-4">
