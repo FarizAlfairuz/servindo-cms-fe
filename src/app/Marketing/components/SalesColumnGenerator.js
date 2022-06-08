@@ -1,47 +1,65 @@
 import React from 'react';
-import MOCK_DATA_SALES from '../../../api/mock_data/MOCK_DATA_SALES.json';
+import toRupiah from '../../../helpers/toRupiah';
 
-const useSalesColumnGenerator = () => {
-  const data = React.useMemo(() => MOCK_DATA_SALES, []);
-
+const useSaleColumnGenerator = () => {
   const column = React.useMemo(
     () => [
       {
-        Header: 'No Invoice',
-        accessor: 'invoice',
-      },
-      {
-        Header: 'Tanggal',
-        accessor: 'tanggal',
+        Header: 'Date',
+        accessor: 'date',
       },
       {
         Header: 'Customer',
-        accessor: 'customer',
+        accessor: 'customer.name',
       },
       {
-        Header: 'Nama Unit',
-        accessor: 'unit',
+        Header: 'Unit',
+        accessor: 'item.name',
       },
       {
         Header: 'QTY',
-        accessor: 'quantity',
+        accessor: 'totalQuantity',
       },
       {
-        Header: 'Harga',
-        accessor: 'harga',
-      },
-      {
-        Header: 'Gross',
+        Header: 'Gross (IDR)',
         accessor: 'gross',
+        Cell: (props) => {
+          const { row } = props;
+
+          return toRupiah(row.original.gross);
+        },
       },
       {
-        Header: 'Aksi',
-        Cell: () => <div>Aksi</div>,
+        Header: 'Discount (IDR)',
+        accessor: 'discount',
+        Cell: (props) => {
+          const { row } = props;
+
+          return toRupiah(row.original.discount);
+        },
+      },
+      {
+        Header: 'Net Sales (IDR)',
+        accessor: 'netSales',
+        Cell: (props) => {
+          const { row } = props;
+
+          return toRupiah(row.original.netSales);
+        },
+      },
+      {
+        Header: 'Net Profit (IDR)',
+        accessor: 'netProfit',
+        Cell: (props) => {
+          const { row } = props;
+
+          return toRupiah(row.original.netProfit);
+        },
       },
     ],
     []
   );
-  return { column, data };
+  return { column };
 };
 
-export default useSalesColumnGenerator;
+export default useSaleColumnGenerator;

@@ -1,4 +1,5 @@
 import React from 'react';
+import toRupiah from '../../../helpers/toRupiah';
 
 const usePurchaseColumnGenerator = () => {
   const column = React.useMemo(
@@ -18,41 +19,32 @@ const usePurchaseColumnGenerator = () => {
       {
         Header: 'QTY',
         accessor: 'totalQuantity',
-        Cell: (props) => {
-          const { row } = props;
-          const qty = row.original.totalQuantity.toLocaleString();
-
-          return qty;
-        },
       },
       {
-        Header: 'COGS (IDR)',
+        Header: 'COGS',
         accessor: 'item.cogs',
         Cell: (props) => {
           const { row } = props;
-          const cogs = row.original.item.cogs.toLocaleString();
 
-          return cogs;
+          return toRupiah(row.original.item.cogs);
         },
       },
       {
-        Header: 'Price (IDR)',
+        Header: 'Price',
         accessor: 'item.price',
         Cell: (props) => {
           const { row } = props;
-          const price = row.original.item.price.toLocaleString();
 
-          return price;
+          return toRupiah(row.original.item.price);
         },
       },
       {
-        Header: 'Gross (IDR)',
+        Header: 'Gross',
         accessor: 'gross',
         Cell: (props) => {
           const { row } = props;
-          const gross = row.original.gross.toLocaleString();
 
-          return gross;
+          return toRupiah(row.original.gross);
         },
       },
     ],

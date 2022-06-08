@@ -24,7 +24,11 @@ const Table = ({ columns, data, loading }) => {
             className="rounded-t-lg"
           >
             {headerGroup.headers.map((column) => (
-              <th key={column.id} {...column.getHeaderProps()} className="py-2">
+              <th
+                key={column.id}
+                {...column.getHeaderProps()}
+                className="py-2 text-sm"
+              >
                 {column.render('Header')}
               </th>
             ))}
@@ -42,7 +46,7 @@ const Table = ({ columns, data, loading }) => {
                 className="odd:bg-slate-100"
               >
                 {row.cells.map((cell, index) => (
-                  <td key={index} className="py-2 px-8">
+                  <td key={index} className="py-2 px-4 text-sm">
                     {cell.render('Cell')}
                   </td>
                 ))}

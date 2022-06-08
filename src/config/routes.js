@@ -160,7 +160,7 @@ export const marketingRoutes = [
   },
   {
     name: 'CreateSalesPage',
-    path: () => '/dashboard/add/penjualan',
+    path: () => '/dashboard/sales/create',
     component: CreateSalesPage,
   },
   {

@@ -34,16 +34,3 @@ export const getAllPurchases = (query) => (dispatch) => {
       dispatch(fetchPurchasesFailed(errorMsg));
     });
 };
-
-// export const getSinglePurchase = (id) => (dispatch) => {
-//   dispatch(fetchPurchasesRequest());
-//   PurchaseAPI.getSinglePurchase(id)
-//     .then((res) => {
-//       const purchase = res.data.data;
-//       dispatch(fetchPurchasesSuccess([purchase]));
-//     })
-//     .catch((err) => {
-//       const errorMsg = err.message;
-//       dispatch(fetchPurchasesFailed(errorMsg));
-//     });
-// };

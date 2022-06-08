@@ -1,18 +1,15 @@
 import React from 'react';
-import Table from '../../Common/components/Table/Table';
-import useSalesColumnGenerator from '../components/SalesColumnGenerator';
+import Button from '../../Common/components/Buttons/Button';
+import SalesTable from '../components/SalesTable';
 
-const SalesPage = () => {
-  const { column, data } = useSalesColumnGenerator();
-
-  return (
-    <div>
-      <div>
-        <h3 className="text-xl font-bold">Data Penjualan</h3>
-      </div>
-      <Table columns={column} data={data} />
+const SalesPage = () => (
+  <div>
+    <div className="flex items-center justify-between mb-5">
+      <h3 className="text-2xl font-bold align-middle">Sales</h3>
+      <Button to="/dashboard/sales/create">Create New Data</Button>
     </div>
-  );
-};
+    <SalesTable />
+  </div>
+);
 
 export default SalesPage;

@@ -15,16 +15,3 @@ export const useGetAllPurchases = (query) => {
 
   return { purchases, pagination, loading };
 };
-
-// export const useGetSinglePurchase = (id) => {
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(getSinglePurchase(id));
-//   }, [id]);
-
-//   const purchase = useSelector((state) => state.purchaseReducer.purchases[0]);
-//   const loading = useSelector((state) => state.purchaseReducer.loading);
-
-//   return { purchase, loading };
-// };
