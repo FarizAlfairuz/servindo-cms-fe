@@ -1,35 +1,48 @@
+import { PencilAltIcon } from '@heroicons/react/solid';
 import React from 'react';
-import MOCK_DATA_CUSTOMER from '../../../api/mock_data/MOCK_DATA_CUSTOMER.json';
+import { Link } from 'react-router-dom';
 
 const useCustomerColumnGenerator = () => {
-  const data = React.useMemo(() => MOCK_DATA_CUSTOMER, []);
-
   const column = React.useMemo(
     () => [
       {
-        Header: 'Nama',
-        accessor: 'nama',
+        Header: 'Name',
+        accessor: 'name',
       },
       {
-        Header: 'Alamat',
-        accessor: 'alamat',
+        Header: 'Address',
+        accessor: 'address',
       },
       {
         Header: 'Contact Person',
         accessor: 'cp',
       },
       {
-        Header: 'Nomor Telepon',
-        accessor: 'telp',
+        Header: 'Phone',
+        accessor: 'phone',
       },
       {
-        Header: 'Aksi',
-        Cell: () => <div>Aksi</div>,
+        Header: 'Action',
+        Cell: (props) => {
+          const { row } = props;
+
+          return (
+            <div className="flex justify-center">
+              <Link
+                to={`/dashboard/customer/${row.original.id}`}
+                className="hover:cursor-pointer inline-flex space-x-1 items-center hover:text-cyan-700"
+              >
+                <PencilAltIcon className="w-4 h-4" />
+                <div className="font-bold text-sm">Edit</div>
+              </Link>
+            </div>
+          );
+        },
       },
     ],
     []
   );
-  return { column, data };
+  return { column };
 };
 
 export default useCustomerColumnGenerator;

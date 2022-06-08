@@ -6,6 +6,7 @@ import alertReducer from './alertReducer';
 import changelogReducer from './changelogReducer';
 import purchaseReducer from './purchaseReducer';
 import vendorReducer from './vendorReducer';
+import customerReducer from './customerReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   changelogReducer,
   purchaseReducer,
   vendorReducer,
+  customerReducer,
 });
 
 export default rootReducer;

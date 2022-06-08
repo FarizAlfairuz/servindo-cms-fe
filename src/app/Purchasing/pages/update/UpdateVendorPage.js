@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useParams } from 'react-router-dom';
@@ -20,12 +20,19 @@ const UpdateVendorPage = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(vendorSchema),
     mode: 'onTouched',
     defaultValues: vendor,
   });
+
+  useEffect(() => {
+    if (vendor) {
+      reset(vendor);
+    }
+  }, [vendor]);
 
   const deleteVendorCallback = useCallback(() => {
     deleteVendor(id);

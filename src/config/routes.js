@@ -150,12 +150,12 @@ export const marketingRoutes = [
   },
   {
     name: 'SalesPage',
-    path: () => '/dashboard/penjualan',
+    path: () => '/dashboard/sales',
     component: SalesPage,
   },
   {
     name: 'CreateCustomerPage',
-    path: () => '/dashboard/add/customer',
+    path: () => '/dashboard/customer/create',
     component: CreateCustomerPage,
   },
   {
@@ -165,7 +165,7 @@ export const marketingRoutes = [
   },
   {
     name: 'UpdateCustomerPage',
-    path: () => '/dashboard/update/customer',
+    path: () => '/dashboard/customer/:id',
     component: UpdateCustomerPage,
   },
   {

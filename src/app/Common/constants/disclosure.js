@@ -21,9 +21,9 @@ export const financeLinks = {
 export const marketingLinks = {
   label: 'Marketing',
   links: [
-    { name: 'Data Penjualan', to: '/dashboard/penjualan' },
-    { name: 'Data Customer', to: '/dashboard/customer' },
-    { name: 'Riwayat Perubahan', to: '/dashboard/riwayat-perubahan' },
+    { name: 'Sales', to: '/dashboard/sales' },
+    { name: 'Customer List', to: '/dashboard/customer' },
+    { name: 'Changelog', to: '/dashboard/changelog/marketing' },
   ],
 };
 

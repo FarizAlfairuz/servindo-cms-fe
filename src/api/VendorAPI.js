@@ -25,7 +25,7 @@ const VendorAPI = {
   },
 
   async deleteSingleVendor(id) {
-    return API.delete(`/vendors${id}`);
+    return API.delete(`/vendors/${id}`);
   },
 };
 
