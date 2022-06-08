@@ -58,4 +58,4 @@ const VerticalBarChart = (props) => {
   return <Bar options={options} data={data} />;
 };
 
-export default VerticalBarChart;
+export default React.memo(VerticalBarChart);
