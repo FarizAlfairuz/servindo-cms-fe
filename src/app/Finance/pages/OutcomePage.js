@@ -1,15 +1,16 @@
 import React from 'react';
-import Table from '../../Common/components/Table/Table';
-import useOutcomeColumnGenerator from '../components/OutcomeColumnGenerator';
+import Tabs from '../../Common/components/Tab/Tabs';
+import PurchasingTable from '../../Purchasing/components/PurchasingTable';
 
 const OutcomePage = () => {
-  const { column, data } = useOutcomeColumnGenerator();
+  const tabList = [{ tabTitle: 'Purchases', tabChildren: <PurchasingTable /> }];
+
   return (
-    <div>
+    <div className="space-y-4">
       <div>
-        <h3 className="text-xl font-bold">Data Pengeluaran</h3>
+        <h3 className="text-xl font-bold">Outcomes</h3>
       </div>
-      <Table columns={column} data={data} />
+      <Tabs tabList={tabList} />
     </div>
   );
 };

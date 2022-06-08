@@ -20,7 +20,7 @@ const DashboardLayout = ({ children, role }) => {
   }, [width]);
 
   return (
-    <div className="flex w-screen bg-slate-50">
+    <div className="flex w-screen bg-slate-50 min-h-screen">
       <Navbar show={isOpen} role={role} />
       <div className="h-full w-full">
         <Header toggleSidebar={toggleSidebar} />

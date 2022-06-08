@@ -9,12 +9,12 @@ export const userLinks = {
 export const financeLinks = {
   label: 'Finance',
   links: [
-    { name: 'Data Pemasukan', to: '/dashboard/pemasukan' },
-    { name: 'Data Pengeluaran', to: '/dashboard/pengeluaran' },
-    { name: 'Jurnal', to: '/dashboard/jurnal' },
-    { name: 'Neraca', to: '/dashboard/neraca' },
-    { name: 'Cetak', to: '/dashboard/cetak' },
-    { name: 'Riwayat Perubahan', to: '/dashboard/riwayat-perubahan' },
+    { name: 'Incomes', to: '/dashboard/income' },
+    { name: 'Outcomes', to: '/dashboard/outcome' },
+    // { name: 'Financial Statement', to: '/dashboard/financial-statement' },
+    { name: 'Balance', to: '/dashboard/balance' },
+    { name: 'Print', to: '/dashboard/print' },
+    { name: 'Changelog', to: '/dashboard/changelog/finance' },
   ],
 };
 

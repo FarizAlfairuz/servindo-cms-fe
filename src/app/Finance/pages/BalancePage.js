@@ -1,18 +1,13 @@
 import React from 'react';
-import Table from '../../Common/components/Table/Table';
-import useBalanceColumnGenerator from '../components/BalanceColumnGenerator';
+import BalanceTable from '../components/BalanceTable';
 
-const BalancePage = () => {
-  const { column, data } = useBalanceColumnGenerator();
-
-  return (
+const BalancePage = () => (
+  <div>
     <div>
-      <div>
-        <h3 className="text-xl font-bold">Neraca</h3>
-      </div>
-      <Table columns={column} data={data} />
+      <h3 className="text-xl font-bold">Balance</h3>
     </div>
-  );
-};
+    <BalanceTable />
+  </div>
+);
 
 export default BalancePage;

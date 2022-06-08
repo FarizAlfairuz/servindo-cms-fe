@@ -87,27 +87,27 @@ export const itemRoutes = [
 export const financeRoutes = [
   {
     name: 'IncomePage',
-    path: () => '/dashboard/pemasukan',
+    path: () => '/dashboard/income',
     component: IncomePage,
   },
   {
     name: 'OutcomePage',
-    path: () => '/dashboard/pengeluaran',
+    path: () => '/dashboard/outcome',
     component: OutcomePage,
   },
   {
     name: 'BalancePage',
-    path: () => '/dashboard/neraca',
+    path: () => '/dashboard/balance',
     component: BalancePage,
   },
   {
     name: 'JournalPage',
-    path: () => '/dashboard/jurnal',
+    path: () => '/dashboard/financial-statement',
     component: JournalPage,
   },
   {
     name: 'PrintPage',
-    path: () => '/dashboard/cetak',
+    path: () => '/dashboard/print',
     component: PrintPage,
   },
   {

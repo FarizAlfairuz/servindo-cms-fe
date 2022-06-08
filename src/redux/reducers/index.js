@@ -10,6 +10,7 @@ import customerReducer from './customerReducer';
 import saleReducer from './saleReducer';
 import itemReducer from './itemReducer';
 import incomeReducer from './incomeReducer';
+import balanceReducer from './balanceReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   saleReducer,
   itemReducer,
   incomeReducer,
+  balanceReducer,
 });
 
 export default rootReducer;
