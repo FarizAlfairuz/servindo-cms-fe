@@ -84,7 +84,7 @@ const ItemSaleTab = () => {
             register={register}
             error={errors}
             options={input.options}
-            requierd
+            required
           />
         ))}
         <div className="text-sm">Customer</div>

@@ -42,7 +42,7 @@ const EditPassword = (props) => {
             register={register}
             error={errors}
             options={input.options}
-            requierd
+            required
           />
         ))}
       </div>

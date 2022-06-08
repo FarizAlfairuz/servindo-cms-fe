@@ -117,7 +117,7 @@ export const financeRoutes = [
   },
   {
     name: 'CreateOtherIncomePage',
-    path: () => '/dashboard/add/pemasukan-lainnya',
+    path: () => '/dashboard/other-incomes/create',
     component: CreateOtherIncomePage,
   },
   {
@@ -132,7 +132,7 @@ export const financeRoutes = [
   },
   {
     name: 'UpdateOtherIncomePage',
-    path: () => '/dashboard/update/pemasukan-lainnya',
+    path: () => '/dashboard/other-incomes/:id',
     component: UpdateOtherIncomePage,
   },
   {

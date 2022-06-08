@@ -75,7 +75,7 @@ const UpdateCustomerPage = () => {
               register={register}
               error={errors}
               options={input.options}
-              requierd
+              required
             />
           ))}
         </div>
