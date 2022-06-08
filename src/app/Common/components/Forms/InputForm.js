@@ -30,7 +30,7 @@ const InputForm = (props) => {
         <select
           className={`text-sm w-full border-2 ${
             error[name] ? 'border-red-500' : 'border-slate-300'
-          } px-2 py-1 rounded-md focus:outline-none`}
+          } px-2 py-1 rounded-md focus:outline-none accent-slate-300`}
           disabled={disabled}
           {...register(name, { required })}
         >

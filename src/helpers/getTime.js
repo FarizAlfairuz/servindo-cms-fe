@@ -6,8 +6,8 @@ export const getTime = (date, option) => {
       : currentTime.getDate();
   const month =
     currentTime.getMonth() + 1 < 10
-      ? `0${currentTime.getMonth()}`
-      : currentTime.getMonth();
+      ? `0${currentTime.getMonth() + 1}`
+      : currentTime.getMonth() + 1;
   const year = currentTime.getFullYear();
   const hours =
     currentTime.getHours() < 10
@@ -19,7 +19,7 @@ export const getTime = (date, option) => {
       : currentTime.getMinutes();
 
   if (option === 'date') {
-    return `${day}-${month}-${year}`;
+    return `${year}-${month}-${day}`;
   }
   return `${hours}:${minutes}`;
 };
