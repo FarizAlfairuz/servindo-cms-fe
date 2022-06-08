@@ -7,7 +7,6 @@ const OtherIncomeAPI = {
         limit: query.limit,
         page: query.page,
         search: query.search,
-        name: query.name,
       },
     });
   },

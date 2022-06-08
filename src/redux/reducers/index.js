@@ -12,6 +12,7 @@ import itemReducer from './itemReducer';
 import incomeReducer from './incomeReducer';
 import balanceReducer from './balanceReducer';
 import otherIncomeReducer from './otherIncomeReducer';
+import operationalReducer from './operationalReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   incomeReducer,
   balanceReducer,
   otherIncomeReducer,
+  operationalReducer,
 });
 
 export default rootReducer;
