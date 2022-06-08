@@ -78,6 +78,7 @@ const CreatePurchasePage = () => {
           <VendorSearchBar
             data={vendors}
             register={setValue}
+            error={errors}
             searchCallback={searchCallbackHandler}
           />
         </div>

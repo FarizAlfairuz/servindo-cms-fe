@@ -22,4 +22,5 @@ export const purchaseSchema = yup.object().shape({
   cogs: yup.number().required('Cost of Goods Sold is required'),
   date: yup.date().required('Date is required'),
   type: yup.string().required('Type is required'),
+  vendorId: yup.string().required('Vendor is required'),
 });

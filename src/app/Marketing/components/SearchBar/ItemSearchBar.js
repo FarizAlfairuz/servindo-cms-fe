@@ -2,9 +2,10 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
-import { debounce } from '../../../helpers/debounce';
+import { debounce } from '../../../../helpers/debounce';
+import toRupiah from '../../../../helpers/toRupiah';
 
-const VendorSearchBar = (props) => {
+const ItemSearchBar = (props) => {
   const { searchCallback, data, register, error } = props;
   const [selectedQuery, setSelectedQuery] = useState('');
 
@@ -22,9 +23,9 @@ const VendorSearchBar = (props) => {
     []
   );
 
-  const valueOnChangeCallback = useCallback((vendor) => {
-    setSelectedQuery(vendor);
-    register('vendorId', vendor.id);
+  const valueOnChangeCallback = useCallback((item) => {
+    setSelectedQuery(item);
+    register('itemId', item.id);
   });
 
   const onChangeCallback = useCallback(
@@ -34,9 +35,11 @@ const VendorSearchBar = (props) => {
     [debounceSearch]
   );
 
-  const displayValue = useCallback((vendor) => {
-    if (!vendor) return '';
-    return vendor.name;
+  const displayValue = useCallback((item) => {
+    if (!item) return '';
+    return `${item.name} - Stock: ${item.quantity} - COGS: ${toRupiah(
+      item.cogs
+    )}`;
   });
 
   return (
@@ -45,7 +48,7 @@ const VendorSearchBar = (props) => {
         <div className="relative">
           <Combobox.Input
             className={`text-sm w-full border-2 ${
-              error.vendorId ? 'border-red-500' : 'border-slate-300'
+              error.itemId ? 'border-red-500' : 'border-slate-300'
             } px-2 py-1 rounded-md focus:outline-none`}
             displayValue={displayValue}
             onChange={(event) => onChangeCallback(event)}
@@ -72,15 +75,15 @@ const VendorSearchBar = (props) => {
                   Nothing found.
                 </div>
               ) : (
-                data.map((vendor) => (
+                data.map((item) => (
                   <Combobox.Option
-                    key={vendor.id}
+                    key={item.id}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
                         active ? 'bg-cyan-800 text-white' : 'text-gray-900'
                       }`
                     }
-                    value={vendor}
+                    value={item}
                   >
                     {({ selected, active }) => (
                       <>
@@ -89,8 +92,8 @@ const VendorSearchBar = (props) => {
                             selected ? 'font-medium' : 'font-normal'
                           }`}
                         >
-                          {vendor.name} - {vendor.address} - {vendor.cp} -{' '}
-                          {vendor.phone}
+                          {item.name} - Stock: {item.quantity} - COGS:{' '}
+                          {toRupiah(item.cogs)}
                         </span>
                         {selected ? (
                           <span
@@ -110,13 +113,13 @@ const VendorSearchBar = (props) => {
           </Transition>
         </div>
       </Combobox>
-      {error.vendorId && (
+      {error.itemId && (
         <div className="text-xs text-red-600 break-words">
-          {error.vendorId.message}
+          {error.itemId.message}
         </div>
       )}
     </>
   );
 };
 
-export default React.memo(VendorSearchBar);
+export default React.memo(ItemSearchBar);
