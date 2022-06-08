@@ -2,11 +2,13 @@ import React from 'react';
 import Tabs from '../../Common/components/Tab/Tabs';
 import PurchasingTable from '../../Purchasing/components/PurchasingTable';
 import OperationalTable from '../components/OperationalTable';
+import TaxTable from '../components/TaxTable';
 
 const OutcomePage = () => {
   const tabList = [
     { tabTitle: 'Purchases', tabChildren: <PurchasingTable /> },
     { tabTitle: 'Operational', tabChildren: <OperationalTable /> },
+    { tabTitle: 'Tax', tabChildren: <TaxTable /> },
   ];
 
   return (
