@@ -112,7 +112,7 @@ export const financeRoutes = [
   },
   {
     name: 'CreateOperationalPage',
-    path: () => '/dashboard/add/operasional',
+    path: () => '/dashboard/operational/create',
     component: CreateOperationalPage,
   },
   {
@@ -122,12 +122,12 @@ export const financeRoutes = [
   },
   {
     name: 'CreateTaxPage',
-    path: () => '/dashboard/add/pajak',
+    path: () => '/dashboard/tax/create',
     component: CreateTaxPage,
   },
   {
     name: 'UpdateOperationalPage',
-    path: () => '/dashboard/update/operasional',
+    path: () => '/dashboard/operational/:id',
     component: UpdateOperationalPage,
   },
   {
@@ -137,7 +137,7 @@ export const financeRoutes = [
   },
   {
     name: 'UpdateTaxPage',
-    path: () => '/dashboard/update/pajak',
+    path: () => '/dashboard/tax/:id',
     component: UpdateTaxPage,
   },
 ];
