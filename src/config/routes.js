@@ -13,9 +13,8 @@ import { ServiceLogPage } from '../app/Support/pages';
 import { UserPage } from '../app/Users/pages';
 
 import {
-  CreateOperationalPage,
   CreateOtherIncomePage,
-  CreateTaxPage,
+  CreateOtherOutcomePage,
 } from '../app/Finance/pages/create';
 import {
   CreateCustomerPage,
@@ -110,21 +109,18 @@ export const financeRoutes = [
     path: () => '/dashboard/print',
     component: PrintPage,
   },
-  {
-    name: 'CreateOperationalPage',
-    path: () => '/dashboard/operational/create',
-    component: CreateOperationalPage,
-  },
+
   {
     name: 'CreateOtherIncomePage',
     path: () => '/dashboard/other-incomes/create',
     component: CreateOtherIncomePage,
   },
   {
-    name: 'CreateTaxPage',
-    path: () => '/dashboard/tax/create',
-    component: CreateTaxPage,
+    name: 'CreateOtherOutcomePage',
+    path: () => '/dashboard/other-outcomes/create',
+    component: CreateOtherOutcomePage,
   },
+
   {
     name: 'UpdateOperationalPage',
     path: () => '/dashboard/operational/:id',

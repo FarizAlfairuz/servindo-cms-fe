@@ -10,7 +10,7 @@ export const itemSaleForm = [
 export const itemSaleSchema = yup.object().shape({
   quantity: yup.number().required('Quantity is required').min(1),
   price: yup.number().required('Cost of Goods Sold is required'),
-  discount: yup.number().required('Discount is required'),
+  discount: yup.number().required('Discount is required').min(0),
   date: yup.date().required('Date is required'),
   customerId: yup.string().required('Customer is required'),
   itemId: yup.string().required('Item is required'),

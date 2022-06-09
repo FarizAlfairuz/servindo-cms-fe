@@ -17,14 +17,9 @@ const OutcomePage = () => {
       <div className="flex items-center justify-between mb-5">
         <h3 className="text-2xl font-bold align-middle">Outcomes</h3>
         <div className="space-y-2">
-          <div>
-            <Button to="/dashboard/operational/create">
-              Add Operational Data
-            </Button>
-          </div>
-          <div>
-            <Button to="/dashboard/tax/create">Add Tax Data</Button>
-          </div>
+          <Button to="/dashboard/other-outcomes/create">
+            Add Other Outcomes
+          </Button>
         </div>
       </div>
       <Tabs tabList={tabList} />
