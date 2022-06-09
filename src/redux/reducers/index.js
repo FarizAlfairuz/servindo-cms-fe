@@ -14,6 +14,8 @@ import balanceReducer from './balanceReducer';
 import otherIncomeReducer from './otherIncomeReducer';
 import operationalReducer from './operationalReducer';
 import taxReducer from './taxReducer';
+import leaseReducer from './leaseReducer';
+import serviceReducer from './serviceReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -31,6 +33,8 @@ const rootReducer = combineReducers({
   otherIncomeReducer,
   operationalReducer,
   taxReducer,
+  leaseReducer,
+  serviceReducer,
 });
 
 export default rootReducer;

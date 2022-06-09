@@ -21,7 +21,7 @@ const useSaleColumnGenerator = () => {
         accessor: 'totalQuantity',
       },
       {
-        Header: 'Gross (IDR)',
+        Header: 'Gross',
         accessor: 'gross',
         Cell: (props) => {
           const { row } = props;
@@ -30,7 +30,7 @@ const useSaleColumnGenerator = () => {
         },
       },
       {
-        Header: 'Discount (IDR)',
+        Header: 'Discount',
         accessor: 'discount',
         Cell: (props) => {
           const { row } = props;
@@ -39,7 +39,7 @@ const useSaleColumnGenerator = () => {
         },
       },
       {
-        Header: 'Net Sales (IDR)',
+        Header: 'Net Sales',
         accessor: 'netSales',
         Cell: (props) => {
           const { row } = props;
@@ -48,7 +48,7 @@ const useSaleColumnGenerator = () => {
         },
       },
       {
-        Header: 'Net Profit (IDR)',
+        Header: 'Net Profit',
         accessor: 'netProfit',
         Cell: (props) => {
           const { row } = props;
