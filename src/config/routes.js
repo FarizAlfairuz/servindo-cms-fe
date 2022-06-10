@@ -35,7 +35,7 @@ import {
 } from '../app/Finance/pages/update';
 import {
   UpdateCustomerPage,
-  UpdateSalesPage,
+  UpdateServicePage,
 } from '../app/Marketing/pages/update';
 import {
   UpdatePurchasePage,
@@ -165,9 +165,9 @@ export const marketingRoutes = [
     component: UpdateCustomerPage,
   },
   {
-    name: 'UpdateSalesPage',
-    path: () => '/dashboard/update/penjualan',
-    component: UpdateSalesPage,
+    name: 'UpdateServicePage',
+    path: () => '/dashboard/service/:id',
+    component: UpdateServicePage,
   },
 ];
 

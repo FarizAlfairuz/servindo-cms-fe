@@ -5,7 +5,7 @@ import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import { debounce } from '../../../../helpers/debounce';
 
 const CustomerSearchBar = (props) => {
-  const { searchCallback, data, register, error } = props;
+  const { searchCallback, data, register, error, initialSelected = '' } = props;
   const [selectedQuery, setSelectedQuery] = useState('');
 
   const debounceSearch = useMemo(
@@ -35,7 +35,13 @@ const CustomerSearchBar = (props) => {
   );
 
   const displayValue = useCallback((customer) => {
-    if (!customer) return '';
+    if (!customer) {
+      if (initialSelected) {
+        return initialSelected;
+      }
+
+      return '';
+    }
     return customer.name;
   });
 

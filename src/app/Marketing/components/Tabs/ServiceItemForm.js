@@ -1,48 +1,32 @@
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  itemLeaseForm,
-  itemLeaseSchema,
-} from '../../constants/LeaseFormSchema';
+import { serviceForm, serviceSchema } from '../../constants/ServiceFormSchema';
 import InputForm from '../../../Common/components/Forms/InputForm';
-import useLeaseService from '../../hooks/useLeaseService';
-import { useGetAllCustomers } from '../../hooks/useFetchCustomers';
+import useServiceService from '../../hooks/useServiceService';
 import Button from '../../../Common/components/Buttons/Button';
+import { useGetAllCustomers } from '../../hooks/useFetchCustomers';
 import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
-import { useGetAllItems } from '../../../Item/hooks/useFetchItems';
-import ItemSearchBar from '../SearchBar/ItemSearchBar';
 
-const SellsItemForm = () => {
+const ServiceItemForm = () => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(itemLeaseSchema), mode: 'onTouched' });
-  const [itemQuery, setItemQuery] = useState({
-    limit: 10,
-    page: 1,
-    search: null,
-  });
+  } = useForm({ resolver: yupResolver(serviceSchema), mode: 'onTouched' });
+
   const [customerQuery, setCustomerQuery] = useState({
     limit: 10,
     page: 1,
     search: null,
   });
 
-  const { createState, createLease } = useLeaseService();
+  const { createState, createService } = useServiceService();
   const { customers } = useGetAllCustomers(customerQuery);
-  const { items } = useGetAllItems(itemQuery);
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    createLease(data);
-  });
-
-  const searchItemCallbackHandler = useCallback((data) => {
-    setItemQuery({
-      search: data,
-    });
+    createService(data);
   });
 
   const searchCustomerCallbackHandler = useCallback((data) => {
@@ -57,14 +41,7 @@ const SellsItemForm = () => {
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
       <div className="space-y-2">
-        <div className="text-sm">Item</div>
-        <ItemSearchBar
-          data={items}
-          register={setValue}
-          error={errors}
-          searchCallback={searchItemCallbackHandler}
-        />
-        {itemLeaseForm.map((input) => (
+        {serviceForm.map((input) => (
           <InputForm
             key={input.name}
             type={input.type}
@@ -96,4 +73,4 @@ const SellsItemForm = () => {
   );
 };
 
-export default SellsItemForm;
+export default ServiceItemForm;

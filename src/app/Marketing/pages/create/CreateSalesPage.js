@@ -3,6 +3,7 @@ import BackButton from '../../../Common/components/Buttons/BackButton';
 import Tabs from '../../../Common/components/Tab/Tabs';
 import SellsItemForm from '../../components/Tabs/SellsItemForm';
 import LeaseItemForm from '../../components/Tabs/LeaseItemForm';
+import ServiceItemForm from '../../components/Tabs/ServiceItemForm';
 
 const CreateSalesPage = () => {
   const tabList = [
@@ -18,7 +19,7 @@ const CreateSalesPage = () => {
     },
     {
       tabTitle: 'Service Item',
-      tabChildren: <SellsItemForm />,
+      tabChildren: <ServiceItemForm />,
       searchParams: 'service-item',
     },
   ];
