@@ -10,7 +10,15 @@ import { AlertContext } from '../../../contexts/AlertContext';
 import logo from '../../../assets/images/logo_servindo.png';
 
 const schema = yup.object().shape({
-  username: yup.string().required('Username is required'),
+  username: yup
+    .string()
+    .required('Username is required')
+    .matches(
+      /^[aA-zZ\d]+$/,
+      'Only alphabets and numbers are allowed for this field '
+    )
+    .min(3, 'Min. 3 characters')
+    .max(16, 'Max. 16 characters'),
   password: yup
     .string()
     .required('Password is required')

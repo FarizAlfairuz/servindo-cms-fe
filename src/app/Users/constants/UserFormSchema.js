@@ -19,11 +19,20 @@ export const userForm = [
 ];
 
 export const userSchema = yup.object().shape({
-  username: yup.string().required('Username is required'),
+  username: yup
+    .string()
+    .required('Username is required')
+    .matches(
+      /^[aA-zZ\d]+$/,
+      'Only alphabets and numbers are allowed for this field '
+    )
+    .min(3, 'Min. 3 characters')
+    .max(16, 'Max. 16 characters'),
   password: yup
     .string()
     .required('Password is required')
-    .min(6, 'Min. 6 characters'),
+    .min(6, 'Min. 6 characters')
+    .max(16, 'Max. 16 characters'),
   confirmPassword: yup
     .string()
     .required('Please confirm your password')
@@ -48,7 +57,15 @@ export const userInfoForm = [
 ];
 
 export const userInfoSchema = yup.object().shape({
-  username: yup.string().required('Username is required'),
+  username: yup
+    .string()
+    .required('Username is required')
+    .matches(
+      /^[aA-zZ\d]+$/,
+      'Only alphabets and numbers are allowed for this field '
+    )
+    .min(3, 'Min. 3 characters')
+    .max(16, 'Max. 16 characters'),
   role: yup.string().required('Role is required'),
 });
 
@@ -61,7 +78,8 @@ export const userPasswordSchema = yup.object().shape({
   password: yup
     .string()
     .required('Password is required')
-    .min(6, 'Min. 6 characters'),
+    .min(6, 'Min. 6 characters')
+    .max(16, 'Max. 16 characters'),
   confirmPassword: yup
     .string()
     .required('Please confirm your password')
