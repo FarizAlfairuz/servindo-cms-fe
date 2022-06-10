@@ -26,7 +26,7 @@ const useTaxService = () => {
         const response = res.data;
         dispatchCreate({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
-        history.push('/dashboard/outcome');
+        history.push('/dashboard/outcome?tab=tax');
         snackbarRef.current.show();
       })
       .catch((err) => {
@@ -48,7 +48,7 @@ const useTaxService = () => {
         const response = res.data;
         dispatchUpdate({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
-        history.push('/dashboard/outcome');
+        history.push('/dashboard/outcome?tab=tax');
         snackbarRef.current.show();
       })
       .catch((err) => {
@@ -68,7 +68,7 @@ const useTaxService = () => {
 
         dispatchDelete({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
-        history.push('/dashboard/outcome');
+        history.push('/dashboard/outcome?tab=tax');
         snackbarRef.current.show();
       })
       .catch((err) => {

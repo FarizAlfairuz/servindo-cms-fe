@@ -24,7 +24,7 @@ const useLeaseService = () => {
         const response = res.data;
         dispatchCreate({ type: FETCH_SUCCESS, payload: response });
         dispatch(alertSuccess(response.message));
-        history.push('/dashboard/sales');
+        history.push('/dashboard/sales?tab=item-leases');
         snackbarRef.current.show();
       })
       .catch((err) => {
