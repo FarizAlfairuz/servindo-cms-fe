@@ -23,7 +23,6 @@ const ChangelogTable = () => {
 
   useEffect(() => {
     setQuery({
-      ...query,
       category,
     });
   }, [category]);
