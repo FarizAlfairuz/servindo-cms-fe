@@ -37,19 +37,7 @@ const SellsItemForm = () => {
   const { items } = useGetAllItems(itemQuery);
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    const leaseData = {
-      items: {
-        id: data.itemId,
-        quantity: data.quantity,
-        price: data.price,
-        discount: data.discount,
-        date: getTime(data.date, 'date'),
-      },
-      customer: {
-        id: data.customerId,
-      },
-    };
-    createLease(leaseData);
+    createLease(data);
   });
 
   const searchItemCallbackHandler = useCallback((data) => {
