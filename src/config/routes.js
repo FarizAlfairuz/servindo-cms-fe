@@ -86,12 +86,12 @@ export const itemRoutes = [
 export const financeRoutes = [
   {
     name: 'IncomePage',
-    path: () => '/dashboard/income',
+    path: () => '/dashboard/income/:tab?',
     component: IncomePage,
   },
   {
     name: 'OutcomePage',
-    path: () => '/dashboard/outcome',
+    path: () => '/dashboard/outcome/:tab?',
     component: OutcomePage,
   },
   {
@@ -117,7 +117,7 @@ export const financeRoutes = [
   },
   {
     name: 'CreateOtherOutcomePage',
-    path: () => '/dashboard/other-outcomes/create',
+    path: () => '/dashboard/other-outcome/create/:tab?',
     component: CreateOtherOutcomePage,
   },
 
@@ -146,7 +146,7 @@ export const marketingRoutes = [
   },
   {
     name: 'SalesPage',
-    path: () => '/dashboard/sales',
+    path: () => '/dashboard/sales/:tab?',
     component: SalesPage,
   },
   {
@@ -156,7 +156,7 @@ export const marketingRoutes = [
   },
   {
     name: 'CreateSalesPage',
-    path: () => '/dashboard/sales/create',
+    path: () => '/dashboard/sale/create',
     component: CreateSalesPage,
   },
   {
@@ -235,7 +235,7 @@ export const userRoutes = [
   },
   {
     name: 'UpdateUserPage',
-    path: () => '/dashboard/users/:id',
+    path: () => '/dashboard/users/:id/:tab?',
     component: UpdateUserPage,
   },
 ];

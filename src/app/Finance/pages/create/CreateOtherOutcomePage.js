@@ -9,8 +9,9 @@ const CreateOtherOutcomePage = () => {
     {
       tabTitle: 'Operational',
       tabChildren: <OperationalForm />,
+      searchParams: 'operational',
     },
-    { tabTitle: 'Tax', tabChildren: <TaxForm /> },
+    { tabTitle: 'Tax', tabChildren: <TaxForm />, searchParams: 'tax' },
   ];
 
   return (

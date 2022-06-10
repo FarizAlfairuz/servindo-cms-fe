@@ -7,9 +7,17 @@ import TaxTable from '../components/TaxTable';
 
 const OutcomePage = () => {
   const tabList = [
-    { tabTitle: 'Purchases', tabChildren: <PurchasingTable /> },
-    { tabTitle: 'Operational', tabChildren: <OperationalTable /> },
-    { tabTitle: 'Tax', tabChildren: <TaxTable /> },
+    {
+      tabTitle: 'Purchases',
+      tabChildren: <PurchasingTable />,
+      searchParams: 'purchases',
+    },
+    {
+      tabTitle: 'Operational',
+      tabChildren: <OperationalTable />,
+      searchParams: 'operational',
+    },
+    { tabTitle: 'Tax', tabChildren: <TaxTable />, searchParams: 'tax' },
   ];
 
   return (
@@ -17,7 +25,7 @@ const OutcomePage = () => {
       <div className="flex items-center justify-between mb-5">
         <h3 className="text-2xl font-bold align-middle">Outcomes</h3>
         <div className="space-y-2">
-          <Button to="/dashboard/other-outcomes/create">
+          <Button to="/dashboard/other-outcome/create">
             Add Other Outcomes
           </Button>
         </div>

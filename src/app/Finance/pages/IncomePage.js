@@ -6,8 +6,12 @@ import OtherIncomeTable from '../components/OtherIncomeTable';
 
 const IncomePage = () => {
   const tabList = [
-    { tabTitle: 'Sales', tabChildren: <IncomeTable /> },
-    { tabTitle: 'Other Income', tabChildren: <OtherIncomeTable /> },
+    { tabTitle: 'Sales', tabChildren: <IncomeTable />, searchParams: 'sales' },
+    {
+      tabTitle: 'Other Income',
+      tabChildren: <OtherIncomeTable />,
+      searchParams: 'other-income',
+    },
   ];
 
   return (

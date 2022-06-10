@@ -1,16 +1,38 @@
 import React from 'react';
 import BackButton from '../../../Common/components/Buttons/BackButton';
-import ItemSaleTab from '../../components/Tabs/ItemSaleTab';
+import Tabs from '../../../Common/components/Tab/Tabs';
+import SellsItemForm from '../../components/Tabs/SellsItemForm';
+import LeaseItemForm from '../../components/Tabs/LeaseItemForm';
 
-const CreateSalesPage = () => (
-  <div className="space-y-4">
-    <BackButton />
-    <div className="flex justify-between mb-5">
-      <h3 className="text-xl font-bold">Sell Item</h3>
+const CreateSalesPage = () => {
+  const tabList = [
+    {
+      tabTitle: 'Sell Item',
+      tabChildren: <SellsItemForm />,
+      searchParams: 'sell-item',
+    },
+    {
+      tabTitle: 'Lease Item',
+      tabChildren: <LeaseItemForm />,
+      searchParams: 'lease-item',
+    },
+    {
+      tabTitle: 'Service Item',
+      tabChildren: <SellsItemForm />,
+      searchParams: 'service-item',
+    },
+  ];
+
+  return (
+    <div className="space-y-4">
+      <BackButton />
+      <div className="flex justify-between mb-5">
+        <h3 className="text-xl font-bold">Sell Item</h3>
+      </div>
+
+      <Tabs tabList={tabList} />
     </div>
-
-    <ItemSaleTab />
-  </div>
-);
+  );
+};
 
 export default CreateSalesPage;

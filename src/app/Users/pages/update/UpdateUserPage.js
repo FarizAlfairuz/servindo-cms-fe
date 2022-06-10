@@ -21,8 +21,16 @@ const UpdateUserPage = () => {
   });
 
   const tabList = [
-    { tabTitle: 'User Info', tabChildren: <EditUserInfo user={user} /> },
-    { tabTitle: 'Password', tabChildren: <EditPassword user={user} /> },
+    {
+      tabTitle: 'User Info',
+      tabChildren: <EditUserInfo user={user} />,
+      searchParams: 'user-info',
+    },
+    {
+      tabTitle: 'Password',
+      tabChildren: <EditPassword user={user} />,
+      searchParams: 'change-password',
+    },
   ];
 
   return (
