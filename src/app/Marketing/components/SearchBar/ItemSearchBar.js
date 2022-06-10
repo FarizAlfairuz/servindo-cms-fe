@@ -37,8 +37,8 @@ const ItemSearchBar = (props) => {
 
   const displayValue = useCallback((item) => {
     if (!item) return '';
-    return `${item.name} - Stock: ${item.quantity} - COGS: ${toRupiah(
-      item.cogs
+    return `${item.name} - Stock: ${item.quantity} - Base Price: ${toRupiah(
+      item.price
     )}`;
   });
 
@@ -92,8 +92,8 @@ const ItemSearchBar = (props) => {
                             selected ? 'font-medium' : 'font-normal'
                           }`}
                         >
-                          {item.name} - Stock: {item.quantity} - COGS:{' '}
-                          {toRupiah(item.cogs)}
+                          {item.name} - Stock: {item.quantity} - Base Price:{' '}
+                          {toRupiah(item.price)}
                         </span>
                         {selected ? (
                           <span

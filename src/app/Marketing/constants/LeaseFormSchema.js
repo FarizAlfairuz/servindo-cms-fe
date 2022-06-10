@@ -1,16 +1,14 @@
 import * as yup from 'yup';
 
-export const itemSaleForm = [
+export const itemLeaseForm = [
+  { type: 'date', label: 'Date', name: 'date' },
   { type: 'number', label: 'Quantity', name: 'quantity' },
   { type: 'number', label: 'Price (IDR)', name: 'price' },
-  { type: 'number', label: 'Discount (IDR)', name: 'discount' },
-  { type: 'date', label: 'Date', name: 'date' },
 ];
 
-export const itemSaleSchema = yup.object().shape({
+export const itemLeaseSchema = yup.object().shape({
   quantity: yup.number().required('Quantity is required').min(1),
   price: yup.number().required('Price is required'),
-  discount: yup.number().required('Discount is required').min(0),
   date: yup.date().required('Date is required'),
   customerId: yup.string().required('Customer is required'),
   itemId: yup.string().required('Item is required'),

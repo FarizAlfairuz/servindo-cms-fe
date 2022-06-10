@@ -1,9 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { itemSaleForm, itemSaleSchema } from '../../constants/SaleFormSchema';
+import {
+  itemLeaseForm,
+  itemLeaseSchema,
+} from '../../constants/LeaseFormSchema';
 import InputForm from '../../../Common/components/Forms/InputForm';
-import useSaleService from '../../hooks/useSalesService';
+import useLeaseService from '../../hooks/useLeaseService';
 import { useGetAllCustomers } from '../../hooks/useFetchCustomers';
 import { getTime } from '../../../../helpers/getTime';
 import Button from '../../../Common/components/Buttons/Button';
@@ -11,13 +14,13 @@ import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
 import { useGetAllItems } from '../../../Item/hooks/useFetchItems';
 import ItemSearchBar from '../SearchBar/ItemSearchBar';
 
-const ItemSaleTab = () => {
+const SellsItemForm = () => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(itemSaleSchema), mode: 'onTouched' });
+  } = useForm({ resolver: yupResolver(itemLeaseSchema), mode: 'onTouched' });
   const [itemQuery, setItemQuery] = useState({
     limit: 10,
     page: 1,
@@ -29,12 +32,12 @@ const ItemSaleTab = () => {
     search: null,
   });
 
-  const { createState, createSale } = useSaleService();
+  const { createState, createLease } = useLeaseService();
   const { customers } = useGetAllCustomers(customerQuery);
   const { items } = useGetAllItems(itemQuery);
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    const saleData = {
+    const leaseData = {
       items: {
         id: data.itemId,
         quantity: data.quantity,
@@ -46,7 +49,7 @@ const ItemSaleTab = () => {
         id: data.customerId,
       },
     };
-    createSale(saleData);
+    createLease(leaseData);
   });
 
   const searchItemCallbackHandler = useCallback((data) => {
@@ -63,7 +66,7 @@ const ItemSaleTab = () => {
 
   return (
     <form
-      className="w-full md:w-1/2 space-y-4"
+      className="w-full md:w-1/2 space-y-4 mt-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
       <div className="space-y-2">
@@ -74,7 +77,7 @@ const ItemSaleTab = () => {
           error={errors}
           searchCallback={searchItemCallbackHandler}
         />
-        {itemSaleForm.map((input) => (
+        {itemLeaseForm.map((input) => (
           <InputForm
             key={input.name}
             type={input.type}
@@ -106,4 +109,4 @@ const ItemSaleTab = () => {
   );
 };
 
-export default ItemSaleTab;
+export default SellsItemForm;
