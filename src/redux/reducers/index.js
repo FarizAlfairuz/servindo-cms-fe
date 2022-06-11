@@ -17,6 +17,8 @@ import taxReducer from './taxReducer';
 import leaseReducer from './leaseReducer';
 import serviceReducer from './serviceReducer';
 import tabReducer from './tabReducer';
+import financialReducer from './financialReducer';
+import totalReducer from './totalReducer';
 
 const rootReducer = combineReducers({
   authReducer,
@@ -37,6 +39,8 @@ const rootReducer = combineReducers({
   leaseReducer,
   serviceReducer,
   tabReducer,
+  financialReducer,
+  totalReducer,
 });
 
 export default rootReducer;

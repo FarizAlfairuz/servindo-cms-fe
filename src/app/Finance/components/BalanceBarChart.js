@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const VerticalBarChart = (props) => {
+const BalanceBarChart = (props) => {
   const { datasets, year } = props;
   const options = {
     responsive: true,
@@ -55,7 +55,8 @@ const VerticalBarChart = (props) => {
       },
     ],
   };
+
   return <Bar options={options} data={data} />;
 };
 
-export default React.memo(VerticalBarChart);
+export default React.memo(BalanceBarChart);

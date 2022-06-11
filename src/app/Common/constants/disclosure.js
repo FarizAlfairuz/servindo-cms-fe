@@ -11,7 +11,7 @@ export const financeLinks = {
   links: [
     { name: 'Incomes', to: '/dashboard/income' },
     { name: 'Outcomes', to: '/dashboard/outcome' },
-    // { name: 'Financial Statement', to: '/dashboard/financial-statement' },
+    { name: 'Financial Statement', to: '/dashboard/financial-statement' },
     { name: 'Balance', to: '/dashboard/balance' },
     { name: 'Print', to: '/dashboard/print' },
     { name: 'Changelog', to: '/dashboard/changelog/finance' },

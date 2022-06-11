@@ -1,16 +1,30 @@
 import React from 'react';
-import Table from '../../Common/components/Table/Table';
-import useJournalColumnGenerator from '../components/JournalColumnGenerator';
+import Tabs from '../../Common/components/Tab/Tabs';
+import FinancialTable from '../components/FinancialTable';
+import TotalTable from '../components/TotalTable';
 
 const JournalPage = () => {
-  const { column, data } = useJournalColumnGenerator();
+  const tabList = [
+    {
+      tabTitle: 'Statements',
+      tabChildren: <FinancialTable />,
+      searchParams: 'statements',
+    },
+    {
+      tabTitle: 'Total',
+      tabChildren: <TotalTable />,
+      searchParams: 'total',
+    },
+  ];
 
   return (
-    <div>
-      <div>
-        <h3 className="text-xl font-bold">Jurnal Keuangan</h3>
+    <div className="space-y-4">
+      <div className="flex items-center justify-between mb-5">
+        <h3 className="text-2xl font-bold align-middle">
+          Financial Statements
+        </h3>
       </div>
-      <Table columns={column} data={data} />
+      <Tabs tabList={tabList} />
     </div>
   );
 };

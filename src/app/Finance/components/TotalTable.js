@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import useBalanceColumnGenerator from './BalanceColumnGenerator';
-import { useGetAllBalances } from '../hooks/useFetchBalance';
+import useTotalColumnGenerator from './TotalColumnGenerator';
+import { useGetTotal } from '../hooks/useFetchFinancialStatements';
 import Table from '../../Common/components/Table/Table';
-import BalanceBarChart from './BalanceBarChart';
+import TotalBarChart from './TotalBarChart';
 
-const BalanceTable = () => {
-  const { column } = useBalanceColumnGenerator();
+const TotalTable = () => {
+  const { column } = useTotalColumnGenerator();
   const [year, setYear] = useState(2022);
 
-  const { balance, loading } = useGetAllBalances(year);
+  const { total, loading } = useGetTotal(year);
 
   const options = [
     { value: 2022, label: '2022' },
@@ -36,14 +36,14 @@ const BalanceTable = () => {
           </select>
         </div>
         <div className="overflow-x-auto">
-          <Table data={balance} columns={column} loading={loading} />
+          <Table data={total} columns={column} loading={loading} withFooter />
         </div>
       </div>
       <div className="w-full md:w-1/2">
-        <BalanceBarChart datasets={balance} year={year} />
+        <TotalBarChart datasets={total} year={year} />
       </div>
     </div>
   );
 };
 
-export default BalanceTable;
+export default TotalTable;
