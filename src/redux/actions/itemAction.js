@@ -35,12 +35,14 @@ export const getAllItems = (query) => (dispatch) => {
     });
 };
 
-export const getSingleItem = (id) => (dispatch) => {
+export const getAllLeasedItems = (query) => (dispatch) => {
   dispatch(fetchItemsRequest());
-  ItemAPI.getSingleItem(id)
+  ItemAPI.getAllLeasedItems(query)
     .then((res) => {
-      const item = res.data.data;
-      dispatch(fetchItemsSuccess([item]));
+      const { edge, cursor } = res.data.data;
+
+      dispatch(fetchItemsSuccess(edge));
+      dispatch(getPagination(cursor));
     })
     .catch((err) => {
       const errorMsg = err.message;

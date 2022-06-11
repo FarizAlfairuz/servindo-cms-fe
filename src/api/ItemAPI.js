@@ -7,7 +7,15 @@ const ItemAPI = {
         limit: query.limit,
         page: query.page,
         search: query.search,
-        name: query.name,
+      },
+    });
+  },
+  async getAllLeasedItems(query) {
+    return API.get('/leasedItems', {
+      params: {
+        limit: query.limit,
+        page: query.page,
+        search: query.search,
       },
     });
   },

@@ -48,6 +48,6 @@ export const itemLinks = {
   label: 'Items',
   links: [
     { name: 'Item List', to: '/dashboard/items' },
-    { name: 'Changelog', to: '/dashboard/changelog' },
+    { name: 'Leased Item List', to: '/dashboard/items/leased' },
   ],
 };

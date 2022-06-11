@@ -47,7 +47,7 @@ import { UpdateItemPage } from '../app/Item/pages/update';
 
 import { ChangelogPage } from '../app/Changelog/pages';
 
-import { ItemPage } from '../app/Item/pages';
+import { ItemPage, LeasedItemPage } from '../app/Item/pages';
 
 export const routes = [
   {
@@ -72,15 +72,15 @@ export const itemRoutes = [
     component: ItemPage,
   },
   {
-    name: 'CreateItemPage',
-    path: () => '/dashboard/items/create',
-    component: CreateItemPage,
+    name: 'LeasedItemPage',
+    path: () => '/dashboard/items/leased',
+    component: LeasedItemPage,
   },
-  {
-    name: 'UpdateItemPage',
-    path: () => '/dashboard/items/:id',
-    component: UpdateItemPage,
-  },
+  // {
+  //   name: 'UpdateItemPage',
+  //   path: () => '/dashboard/items/:id',
+  //   component: UpdateItemPage,
+  // },
 ];
 
 export const financeRoutes = [
@@ -103,11 +103,6 @@ export const financeRoutes = [
     name: 'JournalPage',
     path: () => '/dashboard/financial-statement',
     component: JournalPage,
-  },
-  {
-    name: 'PrintPage',
-    path: () => '/dashboard/print',
-    component: PrintPage,
   },
   {
     name: 'PrintPage',
