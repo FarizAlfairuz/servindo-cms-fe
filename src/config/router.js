@@ -131,11 +131,11 @@ const useRouter = () => {
           {role === 'superadmin' ? (
             <Redirect to="/dashboard/users" />
           ) : role === 'finance' ? (
-            <Redirect to="/dashboard/pemasukan" />
+            <Redirect to="/dashboard/income" />
           ) : role === 'marketing' ? (
-            <Redirect to="/dashboard/penjualan" />
+            <Redirect to="/dashboard/sales" />
           ) : role === 'purchasing' ? (
-            <Redirect to="/dashboard/pembelian" />
+            <Redirect to="/dashboard/purchase" />
           ) : role === 'support' ? (
             <Redirect to="/dashboard/riwayat-service" />
           ) : (

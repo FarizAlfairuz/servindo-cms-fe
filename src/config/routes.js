@@ -109,6 +109,11 @@ export const financeRoutes = [
     path: () => '/dashboard/print',
     component: PrintPage,
   },
+  {
+    name: 'PrintPage',
+    path: () => '/dashboard/print/:name',
+    component: PrintPage,
+  },
 
   {
     name: 'CreateOtherIncomePage',

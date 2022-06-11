@@ -7,6 +7,7 @@ import useServiceService from '../../hooks/useServiceService';
 import Button from '../../../Common/components/Buttons/Button';
 import { useGetAllCustomers } from '../../hooks/useFetchCustomers';
 import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
+import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
 
 const ServiceItemForm = () => {
   const {
@@ -40,6 +41,7 @@ const ServiceItemForm = () => {
       className="w-full md:w-1/2 space-y-4 mt-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
+      {createState.loading && <FullPageLoader />}
       <div className="space-y-2">
         {serviceForm.map((input) => (
           <InputForm

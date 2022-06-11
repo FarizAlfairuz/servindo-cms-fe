@@ -12,8 +12,9 @@ import Button from '../../../Common/components/Buttons/Button';
 import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
 import { useGetAllItems } from '../../../Item/hooks/useFetchItems';
 import ItemSearchBar from '../SearchBar/ItemSearchBar';
+import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
 
-const SellsItemForm = () => {
+const LeaseItemForm = () => {
   const {
     register,
     handleSubmit,
@@ -56,6 +57,7 @@ const SellsItemForm = () => {
       className="w-full md:w-1/2 space-y-4 mt-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
+      {createState.loading && <FullPageLoader />}
       <div className="space-y-2">
         <div className="text-sm">Item</div>
         <ItemSearchBar
@@ -96,4 +98,4 @@ const SellsItemForm = () => {
   );
 };
 
-export default SellsItemForm;
+export default LeaseItemForm;

@@ -21,6 +21,15 @@ const useSaleColumnGenerator = () => {
         accessor: 'description',
       },
       {
+        Header: 'Tax',
+        accessor: 'tax',
+        Cell: (props) => {
+          const { row } = props;
+
+          return `${row.original.tax}%`;
+        },
+      },
+      {
         Header: 'QTY',
         accessor: 'quantity',
       },
