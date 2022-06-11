@@ -1,4 +1,4 @@
-const toFirstLetterCapitalize = (string) =>
+const toFirstLetterCapitalize = (string = '') =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
 export default toFirstLetterCapitalize;
