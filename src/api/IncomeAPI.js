@@ -10,6 +10,14 @@ const IncomeAPI = {
   async createIncome(data) {
     return API.post('/incomes', data);
   },
+
+  async getAllInvoices() {
+    return API.get('/files');
+  },
+
+  async downloadInvoice(name) {
+    return API.get(`/files/${name}`, { responseType: 'blob' });
+  },
 };
 
 export default IncomeAPI;

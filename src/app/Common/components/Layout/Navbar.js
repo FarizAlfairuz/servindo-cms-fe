@@ -41,11 +41,11 @@ const Navbar = (props) => {
           {/* {(role === 'superadmin' || role === 'support') && (
             <MenuDisclosure links={links.supportLinks} />
           )} */}
-          {/* {(role === 'superadmin' ||
+          {(role === 'superadmin' ||
             role === 'marketing' ||
             role === 'purchasing') && (
             <MenuDisclosure links={links.itemLinks} />
-          )} */}
+          )}
         </div>
       </div>
     </Transition>
