@@ -22,7 +22,9 @@ const Navbar = (props) => {
           <img src={logo} className="w-20 h-20" alt="" />
           <div className="flex flex-col justify-center">
             <h5 className="font-bold text-xl">CV. Servindo</h5>
-            <h6 className="font-semibold text-sm italic">General and Sevice</h6>
+            <h6 className="font-semibold text-sm italic">
+              General and Service
+            </h6>
           </div>
         </div>
         <div className="space-y-0.5 px-1">

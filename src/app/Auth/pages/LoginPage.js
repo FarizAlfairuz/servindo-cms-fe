@@ -50,7 +50,9 @@ const LoginPage = () => {
           <img src={logo} className="w-20 h-22" alt="" />
           <div className="flex flex-col justify-center">
             <h5 className="font-bold text-xl">CV. Servindo</h5>
-            <h6 className="font-semibold text-sm italic">General and Sevice</h6>
+            <h6 className="font-semibold text-sm italic">
+              General and Service
+            </h6>
           </div>
         </div>
         <form
