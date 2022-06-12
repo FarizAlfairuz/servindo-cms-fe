@@ -89,8 +89,8 @@ const UpdateCustomerPage = () => {
       </form>
 
       <ConfirmModal
-        title="Delete this user?"
-        description="You can't undo this action once you deleted this user."
+        title="Delete this customer?"
+        description="You can't undo this action once you deleted this customer."
         isOpen={isOpen}
         onClickConfirm={deleteCustomerCallback}
         closeModal={closeModal}
