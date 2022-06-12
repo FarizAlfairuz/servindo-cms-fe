@@ -4,7 +4,6 @@ import {
   FETCH_TOTAL_SUCCESS,
   FETCH_TOTAL_FAILED,
 } from '../types/financialTypes';
-import { getPagination } from './paginationAction';
 
 const fetchTotalRequest = () => ({
   type: FETCH_TOTAL_REQUEST,

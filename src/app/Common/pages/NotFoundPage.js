@@ -1,7 +1,6 @@
 import { ArrowRightIcon } from '@heroicons/react/solid';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../components/Buttons/Button';
 
 const NotFoundPage = () => (
   <div className="w-full h-screen flex justify-center items-center">
