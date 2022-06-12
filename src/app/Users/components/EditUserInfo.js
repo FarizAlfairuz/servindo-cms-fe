@@ -35,7 +35,7 @@ const EditUserInfo = (props) => {
 
   return (
     <form
-      className="w-1/2 space-y-4"
+      className="w-full md:w-1/2 space-y-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
       <div className="space-y-2">
