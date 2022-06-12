@@ -28,7 +28,7 @@ const CreateSalesPage = () => {
     <div className="space-y-4">
       <BackButton />
       <div className="flex justify-between mb-5">
-        <h3 className="text-xl font-bold">Sell Item</h3>
+        <h3 className="text-xl font-bold">Create New Data</h3>
       </div>
 
       <Tabs tabList={tabList} />
