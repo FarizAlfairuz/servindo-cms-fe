@@ -26,7 +26,6 @@ import {
 } from '../app/Purchasing/pages/create';
 import { CreateServiceLogPage } from '../app/Support/pages/create';
 import { CreateUserPage } from '../app/Users/pages/create';
-import { CreateItemPage } from '../app/Item/pages/create';
 
 import {
   UpdateOperationalPage,
@@ -37,13 +36,9 @@ import {
   UpdateCustomerPage,
   UpdateServicePage,
 } from '../app/Marketing/pages/update';
-import {
-  UpdatePurchasePage,
-  UpdateVendorPage,
-} from '../app/Purchasing/pages/update';
+import { UpdateVendorPage } from '../app/Purchasing/pages/update';
 import { UpdateServiceLogPage } from '../app/Support/pages/update';
 import { UpdateUserPage } from '../app/Users/pages/update';
-import { UpdateItemPage } from '../app/Item/pages/update';
 
 import { ChangelogPage } from '../app/Changelog/pages';
 
@@ -76,11 +71,6 @@ export const itemRoutes = [
     path: () => '/dashboard/items/leased',
     component: LeasedItemPage,
   },
-  // {
-  //   name: 'UpdateItemPage',
-  //   path: () => '/dashboard/items/:id',
-  //   component: UpdateItemPage,
-  // },
 ];
 
 export const financeRoutes = [
@@ -191,11 +181,6 @@ export const purchasingRoutes = [
     name: 'CreateVendorPage',
     path: () => '/dashboard/vendor/create',
     component: CreateVendorPage,
-  },
-  {
-    name: 'UpdatePurchasePage',
-    path: () => '/dashboard/update/penjualan',
-    component: UpdatePurchasePage,
   },
   {
     name: 'UpdateVendorPage',
