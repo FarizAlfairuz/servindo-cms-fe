@@ -8,7 +8,6 @@ import {
 } from '../app/Finance/pages';
 import { CustomerPage, SalesPage } from '../app/Marketing/pages';
 import { PurchasePage, VendorPage } from '../app/Purchasing/pages';
-import { ServiceLogPage } from '../app/Support/pages';
 
 import { UserPage } from '../app/Users/pages';
 
@@ -24,7 +23,6 @@ import {
   CreatePurchasePage,
   CreateVendorPage,
 } from '../app/Purchasing/pages/create';
-import { CreateServiceLogPage } from '../app/Support/pages/create';
 import { CreateUserPage } from '../app/Users/pages/create';
 
 import {
@@ -37,7 +35,6 @@ import {
   UpdateServicePage,
 } from '../app/Marketing/pages/update';
 import { UpdateVendorPage } from '../app/Purchasing/pages/update';
-import { UpdateServiceLogPage } from '../app/Support/pages/update';
 import { UpdateUserPage } from '../app/Users/pages/update';
 
 import { ChangelogPage } from '../app/Changelog/pages';
@@ -186,24 +183,6 @@ export const purchasingRoutes = [
     name: 'UpdateVendorPage',
     path: () => '/dashboard/vendor/:id',
     component: UpdateVendorPage,
-  },
-];
-
-export const supportRoutes = [
-  {
-    name: 'ServiceLogPage',
-    path: () => '/dashboard/riwayat-service',
-    component: ServiceLogPage,
-  },
-  {
-    name: 'CreateServiceLogPage',
-    path: () => '/dashboard/add/riwayat-service',
-    component: CreateServiceLogPage,
-  },
-  {
-    name: 'UpdateServiceLogPage',
-    path: () => '/dashboard/update/riwayat-service',
-    component: UpdateServiceLogPage,
   },
 ];
 

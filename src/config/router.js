@@ -12,7 +12,6 @@ import {
   financeRoutes,
   marketingRoutes,
   purchasingRoutes,
-  supportRoutes,
   userRoutes,
   changelogRoutes,
   itemRoutes,
@@ -87,15 +86,6 @@ const useRouter = () => {
             role={role}
           />
         ))}
-        {supportRoutes.map((route) => (
-          <SupportRoutes
-            exact
-            key={route.name}
-            path={route.path()}
-            component={route.component}
-            role={role}
-          />
-        ))}
         {userRoutes.map((route) => (
           <UserRoutes
             exact
@@ -136,8 +126,6 @@ const useRouter = () => {
             <Redirect to="/dashboard/sales" />
           ) : role === 'purchasing' ? (
             <Redirect to="/dashboard/purchase" />
-          ) : role === 'support' ? (
-            <Redirect to="/dashboard/riwayat-service" />
           ) : (
             <Redirect to="/login" />
           )}
@@ -224,21 +212,6 @@ const PurchasingRoutes = ({ role, component: Component, ...rest }) => (
     {...rest}
     render={() =>
       role === 'superadmin' || role === 'purchasing' ? (
-        <DashboardLayout role={role}>
-          <Component />
-        </DashboardLayout>
-      ) : (
-        <Redirect to="/dashboard" />
-      )
-    }
-  />
-);
-
-const SupportRoutes = ({ role, component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={() =>
-      role === 'superadmin' || role === 'support' ? (
         <DashboardLayout role={role}>
           <Component />
         </DashboardLayout>
