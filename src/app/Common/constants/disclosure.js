@@ -47,6 +47,6 @@ export const itemLinks = {
   label: 'Items',
   links: [
     { name: 'Item List', to: '/dashboard/items' },
-    { name: 'Leased Item List', to: '/dashboard/items/leased' },
+    { name: 'Leased Item List', to: '/dashboard/leased-items' },
   ],
 };

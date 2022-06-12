@@ -65,7 +65,7 @@ export const itemRoutes = [
   },
   {
     name: 'LeasedItemPage',
-    path: () => '/dashboard/items/leased',
+    path: () => '/dashboard/leased-items',
     component: LeasedItemPage,
   },
 ];
