@@ -11,5 +11,8 @@ export const vendorSchema = yup.object().shape({
   name: yup.string().required('Name is required'),
   address: yup.string().required('Address is required'),
   cp: yup.string().required('Contact Person is required'),
-  phone: yup.string().required('Phone is required'),
+  phone: yup
+    .string()
+    .required('Phone is required')
+    .matches(/^[\d]+$/, 'Only numbers are allowed for this field '),
 });
