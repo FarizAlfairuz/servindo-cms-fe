@@ -1,11 +1,13 @@
 import React, { forwardRef, useState, useImperativeHandle } from 'react';
 import { Transition } from '@headlessui/react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { XIcon } from '@heroicons/react/solid';
+import { alertRequest } from '../../../../redux/actions/alertAction';
 import toFirstLetterCapitalize from '../../../../helpers/toFirstLetterCapitalize';
 
 const Snackbar = forwardRef((props, ref) => {
   const alert = useSelector((state) => state.alertReducer);
+  const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,6 +15,9 @@ const Snackbar = forwardRef((props, ref) => {
     setIsOpen(true);
     setTimeout(() => {
       setIsOpen(false);
+      setTimeout(() => {
+        dispatch(alertRequest());
+      }, 500);
     }, 3000);
   };
 

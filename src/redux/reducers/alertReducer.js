@@ -1,5 +1,13 @@
-import { CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/solid';
-import { ALERT_SUCCESS, ALERT_FAILED } from '../types/alertTypes';
+import {
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  ClockIcon,
+} from '@heroicons/react/solid';
+import {
+  ALERT_SUCCESS,
+  ALERT_FAILED,
+  ALERT_REQUEST,
+} from '../types/alertTypes';
 
 const initialState = {
   message: '',
@@ -27,6 +35,15 @@ const alertReducer = (state = initialState, action) => {
         success: false,
         background: 'bg-red-600',
         icon: <ExclamationCircleIcon className="w-4 h-4" />,
+      };
+
+    case ALERT_REQUEST:
+      return {
+        message: 'Loading',
+        description: '',
+        success: false,
+        background: 'bg-amber-600',
+        icon: <ClockIcon className="w-4 h-4" />,
       };
 
     default:
