@@ -21,7 +21,7 @@ const Navbar = (props) => {
         <div className="px-12 py-6 flex justify-center space-x-2">
           <img src={logo} className="w-20 h-20" alt="" />
           <div className="flex flex-col justify-center">
-            <h5 className="font-bold text-xl">CV. Servindo</h5>
+            <h5 className="font-bold text-xl">CV. SERVINDO</h5>
             <h6 className="font-semibold text-sm italic">
               General and Service
             </h6>
