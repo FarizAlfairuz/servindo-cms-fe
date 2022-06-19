@@ -1,5 +1,6 @@
 import React from 'react';
 import toFirstLetterCapitalize from '../../../helpers/toFirstLetterCapitalize';
+import toRupiah from '../../../helpers/toRupiah';
 
 const useItemColumnGenerator = () => {
   const column = React.useMemo(
@@ -23,6 +24,10 @@ const useItemColumnGenerator = () => {
       {
         Header: 'Price',
         accessor: 'price',
+        Cell: (props) => {
+          const { row } = props;
+          return toRupiah(row.original.price);
+        },
       },
     ],
     []
