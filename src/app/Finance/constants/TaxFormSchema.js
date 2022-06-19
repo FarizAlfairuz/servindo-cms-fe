@@ -7,5 +7,5 @@ export const taxForm = [
 
 export const taxSchema = yup.object().shape({
   date: yup.date().required('Date is required'),
-  total: yup.number().required('Total is required'),
+  total: yup.number().required('Total is required').min(0),
 });

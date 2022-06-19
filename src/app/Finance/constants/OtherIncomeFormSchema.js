@@ -9,5 +9,5 @@ export const otherIncomeForm = [
 export const otherIncomeSchema = yup.object().shape({
   date: yup.date().required('Date is required'),
   description: yup.string().required('Description is required'),
-  total: yup.number().required('Total is required'),
+  total: yup.number().required('Total is required').min(0),
 });
