@@ -1,4 +1,4 @@
-const toRupiah = (data) => {
+const toRupiah = (data = '') => {
   const rupiah = data.toLocaleString();
 
   return `Rp. ${rupiah}`;
