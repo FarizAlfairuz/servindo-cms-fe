@@ -18,6 +18,16 @@ const FinancialStatementAPI = {
       },
     });
   },
+
+  async downloadStatement(month, year) {
+    return API.get('/statements/download', {
+      params: {
+        month,
+        year,
+      },
+      responseType: 'blob',
+    });
+  },
 };
 
 export default FinancialStatementAPI;

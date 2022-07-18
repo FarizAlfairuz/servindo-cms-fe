@@ -4,7 +4,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const MenuDisclosure = ({ links }) => (
-  <Disclosure as="div">
+  <Disclosure as="div" defaultOpen>
     {({ open }) => (
       <div className="px-2">
         <Disclosure.Button className="flex justify-between w-full px-4 py-2 rounded-md text-sm font-medium text-left text-white bg-cyan-800 hover:bg-cyan-700 focus:outline-none">

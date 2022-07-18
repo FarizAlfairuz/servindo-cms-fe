@@ -20,7 +20,7 @@ const InputForm = (props) => {
         <input
           type={type}
           className={`text-sm w-full border-2 ${
-            error[name] ? 'border-red-500' : 'border-slate-300'
+            error && error[name] ? 'border-red-500' : 'border-slate-300'
           } px-2 py-1 rounded-md focus:outline-none`}
           placeholder={placeholder}
           disabled={disabled}
@@ -29,7 +29,7 @@ const InputForm = (props) => {
       ) : (
         <select
           className={`text-sm w-full border-2 ${
-            error[name] ? 'border-red-500' : 'border-slate-300'
+            error && error[name] ? 'border-red-500' : 'border-slate-300'
           } px-2 py-1 rounded-md focus:outline-none accent-slate-300`}
           disabled={disabled}
           {...register(name, { required })}
@@ -41,7 +41,7 @@ const InputForm = (props) => {
           ))}
         </select>
       )}
-      {error[name] && (
+      {error && error[name] && (
         <div className="text-xs text-red-600 break-words">
           {error[name].message}
         </div>
