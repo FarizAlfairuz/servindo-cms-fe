@@ -51,7 +51,7 @@ export const userInfoForm = [
       { value: 'finance', label: 'Finance' },
       { value: 'marketing', label: 'Marketing' },
       { value: 'purchasing', label: 'Purchasing' },
-      { value: 'support', label: 'Support' },
+      // { value: 'support', label: 'Support' },
     ],
   },
 ];
