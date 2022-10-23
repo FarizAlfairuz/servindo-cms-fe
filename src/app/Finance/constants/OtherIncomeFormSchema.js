@@ -7,7 +7,18 @@ export const otherIncomeForm = [
 ];
 
 export const otherIncomeSchema = yup.object().shape({
-  date: yup.date().required('Date is required'),
+  date: yup.date().required('Date is required').typeError('Date is required'),
   description: yup.string().required('Description is required'),
-  total: yup.number().required('Total is required').min(0),
+  total: yup
+    .number()
+    .required('Total is required')
+    .min(0)
+    .typeError('Total is required'),
+  image: yup
+    .mixed()
+    .required('No file chosen')
+    .test({
+      message: 'No file chosen',
+      test: (arr) => arr.length > 0,
+    }),
 });

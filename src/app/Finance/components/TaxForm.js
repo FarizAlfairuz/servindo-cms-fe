@@ -3,33 +3,42 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { taxForm, taxSchema } from '../constants/TaxFormSchema';
 import useTaxService from '../hooks/useTaxService';
-import { getTime } from '../../../helpers/getTime';
 import InputForm from '../../Common/components/Forms/InputForm';
 import Button from '../../Common/components/Buttons/Button';
+import ImageForm from '../../Common/components/Forms/ImageForm';
+import FullPageLoader from '../../Common/components/Loader/FullPageLoader';
 
 const TaxForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(taxSchema), mode: 'onTouched' });
 
   const { createState, createTax } = useTaxService();
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    const taxData = {
-      date: getTime(data.date, 'date'),
-      description: data.description,
-      total: data.total,
-    };
-    createTax(taxData);
+    const uploadedImage = data.image ? data.image[0] : undefined;
+    const taxFormData = document.getElementById('tax_form');
+
+    const formData = new FormData(taxFormData);
+    formData.set('image', uploadedImage);
+
+    createTax(formData);
   });
+
+  const watchImage = watch('image');
+
   return (
     <form
-      className="w-full md:w-1/2 space-y-4"
+      id="tax_form"
+      className="flex flex-col sm:flex-row space-x-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
-      <div className="space-y-2">
+      {createState.loading && <FullPageLoader />}
+
+      <div className="w-full space-y-2">
         {taxForm.map((input) => (
           <InputForm
             key={input.name}
@@ -43,13 +52,22 @@ const TaxForm = () => {
             required
           />
         ))}
-      </div>
-      <div className="flex justify-end">
-        <div>
-          <Button size="small" submit>
-            Submit
-          </Button>
+        <div className="flex justify-end">
+          <div>
+            <Button size="small" submit>
+              Submit
+            </Button>
+          </div>
         </div>
+      </div>
+      <div className="w-full">
+        <ImageForm
+          label="Receipt"
+          name="image"
+          register={register}
+          watchImage={watchImage}
+          error={errors && errors.image}
+        />
       </div>
     </form>
   );

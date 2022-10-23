@@ -8,12 +8,14 @@ import Button from '../../../Common/components/Buttons/Button';
 import { useGetAllCustomers } from '../../hooks/useFetchCustomers';
 import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
 import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
+import ImageForm from '../../../Common/components/Forms/ImageForm';
 
 const ServiceItemForm = () => {
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(serviceSchema), mode: 'onTouched' });
 
@@ -27,7 +29,13 @@ const ServiceItemForm = () => {
   const { customers } = useGetAllCustomers(customerQuery);
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    createService(data);
+    const uploadedImage = data.image ? data.image[0] : undefined;
+    const serviceFormData = document.getElementById('service_form');
+
+    const formData = new FormData(serviceFormData);
+    formData.set('image', uploadedImage);
+    formData.append('customerId', data.customerId);
+    createService(formData);
   });
 
   const searchCustomerCallbackHandler = useCallback((data) => {
@@ -36,13 +44,16 @@ const ServiceItemForm = () => {
     });
   });
 
+  const watchImage = watch('image');
+
   return (
     <form
-      className="w-full md:w-1/2 space-y-4 mt-4"
+      id="service_form"
+      className="flex flex-col sm:flex-row space-x-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
       {createState.loading && <FullPageLoader />}
-      <div className="space-y-2">
+      <div className="w-full space-y-2">
         {serviceForm.map((input) => (
           <InputForm
             key={input.name}
@@ -63,13 +74,23 @@ const ServiceItemForm = () => {
           error={errors}
           searchCallback={searchCustomerCallbackHandler}
         />
-      </div>
-      <div className="flex justify-end">
-        <div>
-          <Button size="small" submit>
-            Submit
-          </Button>
+        <div className="flex justify-end">
+          <div>
+            <Button size="small" submit>
+              Submit
+            </Button>
+          </div>
         </div>
+      </div>
+
+      <div className="w-full">
+        <ImageForm
+          label="Receipt"
+          name="image"
+          register={register}
+          watchImage={watchImage}
+          error={errors && errors.image}
+        />
       </div>
     </form>
   );

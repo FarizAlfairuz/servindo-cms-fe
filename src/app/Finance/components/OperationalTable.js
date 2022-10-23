@@ -8,7 +8,7 @@ import { useGetAllOperationals } from '../hooks/useFetchOperational';
 import useOperationalColumnGenerator from './OperationalColumnGenerator';
 
 const OperationalTable = () => {
-  const { column } = useOperationalColumnGenerator();
+  const { column, modal } = useOperationalColumnGenerator();
 
   const {
     currentPage,
@@ -53,6 +53,7 @@ const OperationalTable = () => {
           totalPage={pagination.totalPages}
         />
       </div>
+      {modal()}
     </div>
   );
 };

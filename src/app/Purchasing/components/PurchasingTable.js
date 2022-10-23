@@ -8,7 +8,7 @@ import { useGetAllPurchases } from '../hooks/useFetchPurchases';
 import usePurchaseColumnGenerator from './PurchaseColumnGenerator';
 
 const PurchasingTable = () => {
-  const { column } = usePurchaseColumnGenerator();
+  const { column, modal } = usePurchaseColumnGenerator();
 
   const {
     currentPage,
@@ -53,6 +53,7 @@ const PurchasingTable = () => {
           totalPage={pagination.totalPages}
         />
       </div>
+      {modal()}
     </div>
   );
 };

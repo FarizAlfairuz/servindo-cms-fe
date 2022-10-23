@@ -12,13 +12,15 @@ import usePurchaseService from '../../hooks/usePurchaseService';
 import VendorSearchBar from '../../components/VendorSearchBar';
 import usePagination from '../../../Common/hooks/usePagination';
 import { useGetAllVendors } from '../../hooks/useFetchVendors';
-import { getTime } from '../../../../helpers/getTime';
+import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
+import ImageForm from '../../../Common/components/Forms/ImageForm';
 
 const CreatePurchasePage = () => {
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(purchaseSchema), mode: 'onTouched' });
 
@@ -28,19 +30,14 @@ const CreatePurchasePage = () => {
   const { vendors } = useGetAllVendors(query);
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    const purchaseData = {
-      items: {
-        name: data.name,
-        quantity: data.quantity,
-        cogs: data.cogs,
-        type: data.type,
-        date: getTime(data.date, 'date'),
-      },
-      vendor: {
-        id: data.vendorId,
-      },
-    };
-    createPurchase(purchaseData);
+    const uploadedImage = data.image ? data.image[0] : undefined;
+    const purchaseFormData = document.getElementById('purchase_form');
+
+    const formData = new FormData(purchaseFormData);
+    formData.set('image', uploadedImage);
+    formData.append('vendorId', data.vendorId);
+
+    createPurchase(formData);
   });
 
   const searchCallbackHandler = useCallback((data) => {
@@ -49,18 +46,22 @@ const CreatePurchasePage = () => {
     });
   });
 
+  const watchImage = watch('image');
+
   return (
     <div className="space-y-4">
+      {createState.loading && <FullPageLoader />}
       <BackButton />
       <div className="flex justify-between mb-5">
         <h3 className="text-xl font-bold">Purchase New Item</h3>
       </div>
 
       <form
-        className="w-full md:w-1/2 space-y-4"
+        id="purchase_form"
+        className="flex flex-col sm:flex-row space-x-4"
         onSubmit={handleSubmit(onSubmitHandlerCallback)}
       >
-        <div className="space-y-2">
+        <div className="w-full space-y-2">
           {purchaseForm.map((input) => (
             <InputForm
               key={input.name}
@@ -81,13 +82,23 @@ const CreatePurchasePage = () => {
             error={errors}
             searchCallback={searchCallbackHandler}
           />
-        </div>
-        <div className="flex justify-end">
-          <div>
-            <Button size="small" submit>
-              Submit
-            </Button>
+          <div className="flex justify-end">
+            <div>
+              <Button size="small" submit>
+                Submit
+              </Button>
+            </div>
           </div>
+        </div>
+
+        <div className="w-full">
+          <ImageForm
+            label="Receipt"
+            name="image"
+            register={register}
+            watchImage={watchImage}
+            error={errors && errors.image}
+          />
         </div>
       </form>
     </div>

@@ -13,6 +13,8 @@ import { useGetSingleOtherIncome } from '../../hooks/useFetchOtherIncome';
 import useOtherIncomeService from '../../hooks/useOtherIncomeService';
 import useModal from '../../../Common/hooks/useModal';
 import ConfirmModal from '../../../Common/components/Modals/ConfirmModal';
+import ImageForm from '../../../Common/components/Forms/ImageForm';
+import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
 
 const UpdateOtherIncomePage = () => {
   const { id } = useParams();
@@ -23,7 +25,8 @@ const UpdateOtherIncomePage = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    watch,
+    formState: { errors, dirtyFields },
   } = useForm({ resolver: yupResolver(otherIncomeSchema), mode: 'onTouched' });
 
   useEffect(() => {
@@ -36,15 +39,28 @@ const UpdateOtherIncomePage = () => {
     useOtherIncomeService();
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    updateOtherIncome(otherIncome.id, data);
+    const formData = new FormData();
+
+    Object.keys(dirtyFields).forEach((field) => {
+      if (field === 'image') {
+        const uploadedImage = data.image ? data.image[0] : undefined;
+        if (uploadedImage) formData.append('image', uploadedImage);
+      }
+      formData.append(field, data[field]);
+    });
+
+    updateOtherIncome(otherIncome.id, formData);
   });
 
   const deleteHandlerCallback = useCallback(() => {
     deleteOtherIncome(otherIncome.id);
   });
 
+  const watchImage = watch('image');
+
   return (
     <div className="space-y-4">
+      {updateState.loading && <FullPageLoader />}
       <div className="flex justify-between">
         <BackButton />
         <div>
@@ -58,10 +74,11 @@ const UpdateOtherIncomePage = () => {
       </div>
 
       <form
-        className="w-full md:w-1/2 space-y-4"
+        id="update_other_income_form"
+        className="flex flex-col sm:flex-row space-x-4"
         onSubmit={handleSubmit(onSubmitHandlerCallback)}
       >
-        <div className="space-y-2">
+        <div className="w-full space-y-2">
           {otherIncomeForm.map((input) => (
             <InputForm
               key={input.name}
@@ -75,13 +92,22 @@ const UpdateOtherIncomePage = () => {
               required
             />
           ))}
-        </div>
-        <div className="flex justify-end">
-          <div>
-            <Button size="small" submit>
-              Submit
-            </Button>
+          <div className="flex justify-end">
+            <div>
+              <Button size="small" submit>
+                Submit
+              </Button>
+            </div>
           </div>
+        </div>
+        <div className="w-full">
+          <ImageForm
+            label="Receipt"
+            name="image"
+            register={register}
+            watchImage={watchImage}
+            error={errors && errors.image}
+          />
         </div>
       </form>
       <ConfirmModal

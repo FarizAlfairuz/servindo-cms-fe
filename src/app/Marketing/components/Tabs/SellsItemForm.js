@@ -5,18 +5,19 @@ import { itemSaleForm, itemSaleSchema } from '../../constants/SaleFormSchema';
 import InputForm from '../../../Common/components/Forms/InputForm';
 import useSaleService from '../../hooks/useSalesService';
 import { useGetAllCustomers } from '../../hooks/useFetchCustomers';
-import { getTime } from '../../../../helpers/getTime';
 import Button from '../../../Common/components/Buttons/Button';
 import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
 import { useGetAllItems } from '../../../Item/hooks/useFetchItems';
 import ItemSearchBar from '../SearchBar/ItemSearchBar';
 import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
+import ImageForm from '../../../Common/components/Forms/ImageForm';
 
 const SellsItemForm = () => {
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(itemSaleSchema), mode: 'onTouched' });
   const [itemQuery, setItemQuery] = useState({
@@ -35,20 +36,15 @@ const SellsItemForm = () => {
   const { items } = useGetAllItems(itemQuery);
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    const saleData = {
-      items: {
-        id: data.itemId,
-        quantity: data.quantity,
-        price: data.price,
-        discount: data.discount,
-        date: getTime(data.date, 'date'),
-        tax: data.tax,
-      },
-      customer: {
-        id: data.customerId,
-      },
-    };
-    createSale(saleData);
+    const uploadedImage = data.image ? data.image[0] : undefined;
+    const saleFormData = document.getElementById('sales_form');
+
+    const formData = new FormData(saleFormData);
+    formData.set('image', uploadedImage);
+    formData.append('itemId', data.itemId);
+    formData.append('customerId', data.customerId);
+
+    createSale(formData);
   });
 
   const searchItemCallbackHandler = useCallback((data) => {
@@ -63,13 +59,16 @@ const SellsItemForm = () => {
     });
   });
 
+  const watchImage = watch('image');
+
   return (
     <form
-      className="w-full md:w-1/2 space-y-4 mt-4"
+      id="sales_form"
+      className="flex flex-col sm:flex-row space-x-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
       {createState.loading && <FullPageLoader />}
-      <div className="space-y-2">
+      <div className="w-full space-y-2">
         <div className="text-sm">Item</div>
         <ItemSearchBar
           data={items}
@@ -97,16 +96,26 @@ const SellsItemForm = () => {
           error={errors}
           searchCallback={searchCustomerCallbackHandler}
         />
-      </div>
-      <div className="flex justify-end">
-        <div>
-          <Button size="small" submit>
-            Submit
-          </Button>
+        <div className="flex justify-end">
+          <div>
+            <Button size="small" submit>
+              Submit
+            </Button>
+          </div>
         </div>
+      </div>
+
+      <div className="w-full">
+        <ImageForm
+          label="Receipt"
+          name="image"
+          register={register}
+          watchImage={watchImage}
+          error={errors && errors.image}
+        />
       </div>
     </form>
   );
 };
 
-export default SellsItemForm;
+export default React.memo(SellsItemForm);

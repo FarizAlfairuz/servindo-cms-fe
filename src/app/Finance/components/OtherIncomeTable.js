@@ -8,7 +8,7 @@ import { useGetAllOtherIncomes } from '../hooks/useFetchOtherIncome';
 import useOtherIncomeColumnGenerator from './OtherIncomeColumnGenerator';
 
 const OtherIncomeTable = () => {
-  const { column } = useOtherIncomeColumnGenerator();
+  const { column, modal } = useOtherIncomeColumnGenerator();
 
   const {
     currentPage,
@@ -53,6 +53,7 @@ const OtherIncomeTable = () => {
           totalPage={pagination.totalPages}
         />
       </div>
+      {modal()}
     </div>
   );
 };

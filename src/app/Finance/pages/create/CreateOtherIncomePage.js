@@ -9,38 +9,45 @@ import {
   otherIncomeSchema,
 } from '../../constants/OtherIncomeFormSchema';
 import useOtherIncomeService from '../../hooks/useOtherIncomeService';
-import { getTime } from '../../../../helpers/getTime';
+import ImageForm from '../../../Common/components/Forms/ImageForm';
+import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
 
 const CreateOtherIncomePage = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(otherIncomeSchema), mode: 'onTouched' });
 
   const { createState, createOtherIncome } = useOtherIncomeService();
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    const otherIncomeData = {
-      date: getTime(data.date, 'date'),
-      description: data.description,
-      total: data.total,
-    };
-    createOtherIncome(otherIncomeData);
+    const uploadedImage = data.image ? data.image[0] : undefined;
+    const otherIncomeFormData = document.getElementById('other_income_form');
+
+    const formData = new FormData(otherIncomeFormData);
+    formData.set('image', uploadedImage);
+
+    createOtherIncome(formData);
   });
+
+  const watchImage = watch('image');
 
   return (
     <div className="space-y-4">
+      {createState.loading && <FullPageLoader />}
       <BackButton />
       <div className="flex justify-between mb-5">
         <h3 className="text-xl font-bold">Add Other Income</h3>
       </div>
 
       <form
-        className="w-full md:w-1/2 space-y-4"
+        id="other_income_form"
+        className="flex flex-col sm:flex-row space-x-4"
         onSubmit={handleSubmit(onSubmitHandlerCallback)}
       >
-        <div className="space-y-2">
+        <div className="w-full space-y-2">
           {otherIncomeForm.map((input) => (
             <InputForm
               key={input.name}
@@ -54,13 +61,23 @@ const CreateOtherIncomePage = () => {
               required
             />
           ))}
-        </div>
-        <div className="flex justify-end">
-          <div>
-            <Button size="small" submit>
-              Submit
-            </Button>
+          <div className="flex justify-end">
+            <div>
+              <Button size="small" submit>
+                Submit
+              </Button>
+            </div>
           </div>
+        </div>
+
+        <div className="w-full">
+          <ImageForm
+            label="Receipt"
+            name="image"
+            register={register}
+            watchImage={watchImage}
+            error={errors && errors.image}
+          />
         </div>
       </form>
     </div>

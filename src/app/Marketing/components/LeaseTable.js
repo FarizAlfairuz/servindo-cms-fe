@@ -8,7 +8,7 @@ import { useGetAllLeases } from '../hooks/useFetchLeases';
 import useLeaseColumnGenerator from './LeaseColumnGenerator';
 
 const LeaseTable = () => {
-  const { column } = useLeaseColumnGenerator();
+  const { column, modal } = useLeaseColumnGenerator();
 
   const {
     currentPage,
@@ -53,6 +53,7 @@ const LeaseTable = () => {
           totalPage={pagination.totalPages}
         />
       </div>
+      {modal()}
     </div>
   );
 };

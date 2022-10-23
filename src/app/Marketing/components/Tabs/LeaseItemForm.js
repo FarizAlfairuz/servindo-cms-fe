@@ -13,12 +13,14 @@ import CustomerSearchBar from '../SearchBar/CustomerSearchBar';
 import { useGetAllItems } from '../../../Item/hooks/useFetchItems';
 import ItemSearchBar from '../SearchBar/ItemSearchBar';
 import FullPageLoader from '../../../Common/components/Loader/FullPageLoader';
+import ImageForm from '../../../Common/components/Forms/ImageForm';
 
 const LeaseItemForm = () => {
   const {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(itemLeaseSchema), mode: 'onTouched' });
   const [itemQuery, setItemQuery] = useState({
@@ -37,7 +39,15 @@ const LeaseItemForm = () => {
   const { items } = useGetAllItems(itemQuery);
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    createLease(data);
+    const uploadedImage = data.image ? data.image[0] : undefined;
+    const leaseFormData = document.getElementById('lease_form');
+
+    const formData = new FormData(leaseFormData);
+    formData.set('image', uploadedImage);
+    formData.append('itemId', data.itemId);
+    formData.append('customerId', data.customerId);
+
+    createLease(formData);
   });
 
   const searchItemCallbackHandler = useCallback((data) => {
@@ -52,13 +62,16 @@ const LeaseItemForm = () => {
     });
   });
 
+  const watchImage = watch('image');
+
   return (
     <form
-      className="w-full md:w-1/2 space-y-4 mt-4"
+      id="lease_form"
+      className="flex flex-col sm:flex-row space-x-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
       {createState.loading && <FullPageLoader />}
-      <div className="space-y-2">
+      <div className="w-full space-y-2">
         <div className="text-sm">Item</div>
         <ItemSearchBar
           data={items}
@@ -86,16 +99,26 @@ const LeaseItemForm = () => {
           error={errors}
           searchCallback={searchCustomerCallbackHandler}
         />
-      </div>
-      <div className="flex justify-end">
-        <div>
-          <Button size="small" submit>
-            Submit
-          </Button>
+        <div className="flex justify-end">
+          <div>
+            <Button size="small" submit>
+              Submit
+            </Button>
+          </div>
         </div>
+      </div>
+
+      <div className="w-full">
+        <ImageForm
+          label="Receipt"
+          name="image"
+          register={register}
+          watchImage={watchImage}
+          error={errors && errors.image}
+        />
       </div>
     </form>
   );
 };
 
-export default LeaseItemForm;
+export default React.memo(LeaseItemForm);

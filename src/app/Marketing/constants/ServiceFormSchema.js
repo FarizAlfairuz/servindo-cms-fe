@@ -8,9 +8,25 @@ export const serviceForm = [
 ];
 
 export const serviceSchema = yup.object().shape({
-  date: yup.date().required('Date is required'),
+  date: yup.date().required('Date is required').typeError('Date is required'),
   description: yup.string().required('Description is required'),
-  price: yup.number().required('Price is required').min(0),
+  price: yup
+    .number()
+    .required('Price is required')
+    .min(0)
+    .typeError('Price is required'),
   customerId: yup.string().required('Customer is required'),
-  tax: yup.number().required('Tax is required').min(0).max(30),
+  tax: yup
+    .number()
+    .required('Tax is required')
+    .min(0)
+    .max(30)
+    .typeError('Tax is required'),
+  image: yup
+    .mixed()
+    .required('No file chosen')
+    .test({
+      message: 'No file chosen',
+      test: (arr) => arr.length > 0,
+    }),
 });

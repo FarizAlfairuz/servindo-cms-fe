@@ -6,33 +6,41 @@ import {
   operationalSchema,
 } from '../constants/OperationalFormSchema';
 import useOperationalService from '../hooks/useOperationalService';
-import { getTime } from '../../../helpers/getTime';
 import InputForm from '../../Common/components/Forms/InputForm';
 import Button from '../../Common/components/Buttons/Button';
+import ImageForm from '../../Common/components/Forms/ImageForm';
+import FullPageLoader from '../../Common/components/Loader/FullPageLoader';
 
 const OperationalForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({ resolver: yupResolver(operationalSchema), mode: 'onTouched' });
 
   const { createState, createOperational } = useOperationalService();
 
   const onSubmitHandlerCallback = useCallback((data) => {
-    const operationalData = {
-      date: getTime(data.date, 'date'),
-      description: data.description,
-      total: data.total,
-    };
-    createOperational(operationalData);
+    const uploadedImage = data.image ? data.image[0] : undefined;
+    const operationalFormData = document.getElementById('operational_form');
+
+    const formData = new FormData(operationalFormData);
+    formData.set('image', uploadedImage);
+
+    createOperational(formData);
   });
+
+  const watchImage = watch('image');
+
   return (
     <form
-      className="w-full md:w-1/2 space-y-4"
+      id="operational_form"
+      className="flex flex-col sm:flex-row space-x-4"
       onSubmit={handleSubmit(onSubmitHandlerCallback)}
     >
-      <div className="space-y-2">
+      {createState.loading && <FullPageLoader />}
+      <div className="w-full space-y-2">
         {operationalForm.map((input) => (
           <InputForm
             key={input.name}
@@ -46,13 +54,23 @@ const OperationalForm = () => {
             required
           />
         ))}
-      </div>
-      <div className="flex justify-end">
-        <div>
-          <Button size="small" submit>
-            Submit
-          </Button>
+        <div className="flex justify-end">
+          <div>
+            <Button size="small" submit>
+              Submit
+            </Button>
+          </div>
         </div>
+      </div>
+
+      <div className="w-full">
+        <ImageForm
+          label="Receipt"
+          name="image"
+          register={register}
+          watchImage={watchImage}
+          error={errors && errors.image}
+        />
       </div>
     </form>
   );

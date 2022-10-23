@@ -8,7 +8,7 @@ import { useGetAllServices } from '../hooks/useFetchServices';
 import useServiceColumnGenerator from './ServiceColumnGenerator';
 
 const ServiceTable = () => {
-  const { column } = useServiceColumnGenerator();
+  const { column, modal } = useServiceColumnGenerator();
 
   const {
     currentPage,
@@ -53,6 +53,7 @@ const ServiceTable = () => {
           totalPage={pagination.totalPages}
         />
       </div>
+      {modal()}
     </div>
   );
 };

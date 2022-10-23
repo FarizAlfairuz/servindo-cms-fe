@@ -8,7 +8,7 @@ import { useGetAllTaxes } from '../hooks/useFetchTax';
 import useTaxColumnGenerator from './TaxColumnGenerator';
 
 const TaxTable = () => {
-  const { column } = useTaxColumnGenerator();
+  const { column, modal } = useTaxColumnGenerator();
 
   const {
     currentPage,
@@ -53,6 +53,7 @@ const TaxTable = () => {
           totalPage={pagination.totalPages}
         />
       </div>
+      {modal()}
     </div>
   );
 };

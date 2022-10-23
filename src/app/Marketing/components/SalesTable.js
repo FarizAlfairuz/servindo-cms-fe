@@ -8,7 +8,7 @@ import { useGetAllSales } from '../hooks/useFetchSales';
 import useSaleColumnGenerator from './SalesColumnGenerator';
 
 const SalesTable = () => {
-  const { column } = useSaleColumnGenerator();
+  const { column, modal } = useSaleColumnGenerator();
 
   const {
     currentPage,
@@ -53,6 +53,7 @@ const SalesTable = () => {
           totalPage={pagination.totalPages}
         />
       </div>
+      {modal()}
     </div>
   );
 };
